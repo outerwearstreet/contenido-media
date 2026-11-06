@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT1H
 X-PUBLISHED-TTL:PT1H
 BEGIN:VEVENT
 UID:ea5b9e6e8e8dec67d06d6e08@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261030T010000Z
 DTEND:20261030T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -35,7 +35,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:3b4eee453e901756024bda0e@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261031T010000Z
 DTEND:20261031T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -59,7 +59,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ab7b8855e3d805947f60c1eb@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261101T010000Z
 DTEND:20261101T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -82,7 +82,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:db94186c244c77ede8370ce0@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261102T010000Z
 DTEND:20261102T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -106,7 +106,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:572f728fffa93feeee975061@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261102T190000Z
 DTEND:20261102T191500Z
 SUMMARY:🖼️ Outer · Carrusel 1:00 PM
@@ -127,7 +127,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:585d0ad1051335a9e70fd3ba@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261103T010000Z
 DTEND:20261103T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM
@@ -148,7 +148,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:17e72b23f26e12021ae697ee@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261103T010000Z
 DTEND:20261103T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -169,7 +169,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:a5bd689b76945d32baa2e81f@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261103T190000Z
 DTEND:20261103T191500Z
 SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ⏳ sin programar
@@ -189,7 +189,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:8e20deddb22c02e6c57b7f7c@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261104T010000Z
 DTEND:20261104T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM
@@ -210,7 +210,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:16ebc2c8f098974193c4c542@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261104T010000Z
 DTEND:20261104T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -231,7 +231,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:b32509f057be8f0159a5abe3@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261104T190000Z
 DTEND:20261104T191500Z
 SUMMARY:🖼️ Outer · Carrusel 1:00 PM
@@ -252,7 +252,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:03f6629339440e77590b596d@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261105T010000Z
 DTEND:20261105T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM
@@ -273,7 +273,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:00f5072c200b4dbc4e05b57e@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261105T010000Z
 DTEND:20261105T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -294,7 +294,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:a52a499729708eff308bf91b@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261105T183000Z
 DTEND:20261105T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -318,7 +318,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:4ab62ed21f2467ce77a954e4@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261105T183000Z
 DTEND:20261105T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -342,7 +342,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ee339f570430368e0b0ba136@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261105T190000Z
 DTEND:20261105T191500Z
 SUMMARY:🖼️ Alpha · Carrusel 1:00 PM
@@ -363,7 +363,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:330f006781266042a02b023f@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261105T223000Z
 DTEND:20261105T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -387,7 +387,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:c3d76a49b574e05ae06d000b@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261105T223000Z
 DTEND:20261105T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -411,7 +411,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:80e2752d41bfa7a50dfb4ddc@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261106T010000Z
 DTEND:20261106T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM
@@ -432,7 +432,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:de718662b7ef36a1f9958033@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261106T010000Z
 DTEND:20261106T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -453,7 +453,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:3651cd9411d1a2563203e1a8@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261106T030000Z
 DTEND:20261106T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -477,7 +477,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:6b6459c943d93678aba05e59@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261106T030000Z
 DTEND:20261106T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -501,7 +501,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:bf9d76efadeb9c0c34247558@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261106T190000Z
 DTEND:20261106T191500Z
 SUMMARY:🖼️ Outer · Carrusel 1:00 PM
@@ -522,7 +522,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:7ca7af4c48d3452f5a900445@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261107T010000Z
 DTEND:20261107T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM
@@ -543,7 +543,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:39e2e496c9fa3aac7fb9e0ac@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261107T010000Z
 DTEND:20261107T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -564,7 +564,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1fa3d79d49dfb163513b9d8d@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261107T190000Z
 DTEND:20261107T191500Z
 SUMMARY:🖼️ Alpha · Carrusel 1:00 PM
@@ -584,7 +584,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:81109aa6b32833411804054b@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261108T010000Z
 DTEND:20261108T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM
@@ -605,7 +605,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:8c45a0a1a0c494a8e4e10922@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261108T010000Z
 DTEND:20261108T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -626,7 +626,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:b50d2792f99871379e4e2524@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261109T010000Z
 DTEND:20261109T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM
@@ -647,7 +647,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:08ff9b164bf73071dc67788a@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261109T010000Z
 DTEND:20261109T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM
@@ -668,7 +668,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:0c8fb864218416753cb9a582@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261109T190000Z
 DTEND:20261109T191500Z
 SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ⏳ sin programar
@@ -708,19 +708,19 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:523371ef4935980a97f28220@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+UID:277ae10f837e43368c1567bc@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
 DTSTART:20261110T010000Z
 DTEND:20261110T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ⏳ sin programar
 DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
  sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
- treet/contenido-media/main/media/alpha/2026-11/16355dfed9fc_08_esteticas_v
- 2_buffer.mp4\n\nCaption:\n¿Cuál es tu estética? Comentá la tuya 👇 E
- nvíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #aesthetic
-  #moda
+ treet/contenido-media/main/media/alpha/2026-11/36c9219cbdc0_08_esteticas_v
+ 2_hq_buffer.mp4\n\nCaption:\n¿Cuál es tu estética? Comentá la tuya 
+ 👇 Envíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #aes
+ thetic #moda
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
- media/alpha/2026-11/16355dfed9fc_08_esteticas_v2_buffer.mp4
+ media/alpha/2026-11/36c9219cbdc0_08_esteticas_v2_hq_buffer.mp4
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -733,7 +733,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1dd5371eee5364b890896f9b@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261110T010000Z
 DTEND:20261110T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -757,7 +757,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:738bfc524b55188ffe9829dc@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261110T190000Z
 DTEND:20261110T191500Z
 SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ⏳ sin programar
@@ -796,19 +796,19 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:58206165eabfdc6f249247d5@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+UID:044608d030847d0ac4d7a078@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
 DTSTART:20261111T010000Z
 DTEND:20261111T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ⏳ sin programar
 DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
  sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
- treet/contenido-media/main/media/alpha/2026-11/450f9c0465e2_09_esto_o_aque
- llo_v2_buffer.mp4\n\nCaption:\n¿A o B? Los dos funcionan\, vos decidís 
- 👀 Envíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #aes
- thetic #moda
+ treet/contenido-media/main/media/alpha/2026-11/85c9e4742602_09_esto_o_aque
+ llo_v2_hq_buffer.mp4\n\nCaption:\n¿A o B? Los dos funcionan\, vos decidí
+ s 👀 Envíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #a
+ esthetic #moda
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
- media/alpha/2026-11/450f9c0465e2_09_esto_o_aquello_v2_buffer.mp4
+ media/alpha/2026-11/85c9e4742602_09_esto_o_aquello_v2_hq_buffer.mp4
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -821,7 +821,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:a7119dbb6b0e7f661c555ca2@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261111T010000Z
 DTEND:20261111T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -845,7 +845,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ec7d3a3c1adb3c094a7edea1@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261111T190000Z
 DTEND:20261111T191500Z
 SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ⏳ sin programar
@@ -885,18 +885,19 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:35099b902470b6f47157bb56@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+UID:cd64e90e6f590cb4bb0d554f@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
 DTSTART:20261112T010000Z
 DTEND:20261112T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ⏳ sin programar
 DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
  sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
- treet/contenido-media/main/media/alpha/2026-11/fd926ad66637_10_clima_v2_bu
- ffer.mp4\n\nCaption:\nUn outfit para cada clima de Guate 🇬🇹 Envíos 
- a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #aesthetic #moda
+ treet/contenido-media/main/media/alpha/2026-11/3c95b6da238a_10_clima_v2_hq
+ _buffer.mp4\n\nCaption:\nUn outfit para cada clima de Guate 🇬🇹 Enví
+ os a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #aesthetic #mo
+ da
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
- media/alpha/2026-11/fd926ad66637_10_clima_v2_buffer.mp4
+ media/alpha/2026-11/3c95b6da238a_10_clima_v2_hq_buffer.mp4
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -909,7 +910,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:73319a86f8d38ba55d36ebe4@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261112T010000Z
 DTEND:20261112T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -933,7 +934,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:036c27c5483c43a6dcc220cd@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261112T190000Z
 DTEND:20261112T191500Z
 SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ⏳ sin programar
@@ -972,19 +973,19 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:43553963a51dec9f516dcfe2@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+UID:0b10c35cd3e046ef575dce6b@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
 DTSTART:20261113T010000Z
 DTEND:20261113T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ⏳ sin programar
 DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
  sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
- treet/contenido-media/main/media/alpha/2026-11/f4dfa072531e_11_tu_eliges_v
- 2_buffer.mp4\n\nCaption:\nVos elegís el outfit de mañana: ¿1\, 2 o 3? 
- 👇 Envíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #aes
- thetic #moda
+ treet/contenido-media/main/media/alpha/2026-11/b380f85096d8_11_tu_eliges_v
+ 2_hq_buffer.mp4\n\nCaption:\nVos elegís el outfit de mañana: ¿1\, 2 o 3
+ ? 👇 Envíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #a
+ esthetic #moda
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
- media/alpha/2026-11/f4dfa072531e_11_tu_eliges_v2_buffer.mp4
+ media/alpha/2026-11/b380f85096d8_11_tu_eliges_v2_hq_buffer.mp4
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -997,7 +998,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:464754c55434f2484d5ac076@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261113T010000Z
 DTEND:20261113T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1021,7 +1022,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:d29dd8509e9991c7c2502436@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261113T190000Z
 DTEND:20261113T191500Z
 SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ⏳ sin programar
@@ -1061,19 +1062,19 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:e757329cf692a611382c9bc9@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+UID:e6646229ec39d37653444530@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
 DTSTART:20261114T010000Z
 DTEND:20261114T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ⏳ sin programar
 DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
  sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
- treet/contenido-media/main/media/alpha/2026-11/50f5440282ce_12_entrevista_
- v2_buffer.mp4\n\nCaption:\n¿Qué ponerte para una entrevista de trabajo? 
- Tres opciones que nunca fallan Envíos a toda Guatemala 🇬🇹 #oldmoney
-  #menswear #guatemala #aesthetic #moda
+ treet/contenido-media/main/media/alpha/2026-11/dfcb1bc0eb5e_12_entrevista_
+ v2_hq_buffer.mp4\n\nCaption:\n¿Qué ponerte para una entrevista de trabaj
+ o? Tres opciones que nunca fallan Envíos a toda Guatemala 🇬🇹 #oldmo
+ ney #menswear #guatemala #aesthetic #moda
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
- media/alpha/2026-11/50f5440282ce_12_entrevista_v2_buffer.mp4
+ media/alpha/2026-11/dfcb1bc0eb5e_12_entrevista_v2_hq_buffer.mp4
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -1086,7 +1087,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:497ccf111baf48a3083241ce@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261114T010000Z
 DTEND:20261114T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1110,7 +1111,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:f08cc4a0d68b9e422c29560a@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261114T190000Z
 DTEND:20261114T191500Z
 SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ⏳ sin programar
@@ -1145,19 +1146,19 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:f4f3e305e6a982bc9acfbd27@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+UID:3a2857f0dc05893613fdead9@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
 DTSTART:20261115T010000Z
 DTEND:20261115T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ⏳ sin programar
 DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
  sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
- treet/contenido-media/main/media/alpha/2026-11/23c7ec34f1de_13_suegro_v2_b
- uffer.mp4\n\nCaption:\nPOV: tu suegro te ve llegar así a la cena 😎 Env
- íos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #aesthetic #
- moda
+ treet/contenido-media/main/media/alpha/2026-11/c6ad998347d1_13_suegro_v2_h
+ q_buffer.mp4\n\nCaption:\nPOV: tu suegro te ve llegar así a la cena 😎 
+ Envíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala #aestheti
+ c #moda
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
- media/alpha/2026-11/23c7ec34f1de_13_suegro_v2_buffer.mp4
+ media/alpha/2026-11/c6ad998347d1_13_suegro_v2_hq_buffer.mp4
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -1170,7 +1171,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:71985ae5bc098e721522a678@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261115T010000Z
 DTEND:20261115T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1193,19 +1194,19 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:f3e156b80c4f6fbc501e7813@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+UID:7d3cadd784770d1c7e41d294@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
 DTSTART:20261116T010000Z
 DTEND:20261116T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ⏳ sin programar
 DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
  sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
- treet/contenido-media/main/media/alpha/2026-11/696bbc6552bd_01_transformac
- ion_v2_buffer.mp4\n\nCaption:\nSeis looks\, dos hermanos. ¿Cuál es el tu
- yo? 👇 Envíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatemala 
- #aesthetic #moda
+ treet/contenido-media/main/media/alpha/2026-11/f3ac822575d8_01_transformac
+ ion_v2_hq_buffer.mp4\n\nCaption:\nSeis looks\, dos hermanos. ¿Cuál es el
+  tuyo? 👇 Envíos a toda Guatemala 🇬🇹 #oldmoney #menswear #guatema
+ la #aesthetic #moda
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
- media/alpha/2026-11/696bbc6552bd_01_transformacion_v2_buffer.mp4
+ media/alpha/2026-11/f3ac822575d8_01_transformacion_v2_hq_buffer.mp4
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -1218,7 +1219,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:260c59f749628686618bfdf6@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261116T010000Z
 DTEND:20261116T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1241,8 +1242,49 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:4cbb3e4b61e8633b9115d086@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
+DTSTART:20261116T190000Z
+DTEND:20261116T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
+ sica en IG y TikTok\nArchivos (10):\nhttps://raw.githubusercontent.com/out
+ erwearstreet/contenido-media/main/media/outer/2026-11/350fda487950_carruse
+ l_2026-11-16_v1_01.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/
+ contenido-media/main/media/outer/2026-11/5888db4f07d7_carrusel_2026-11-16_
+ v1_02.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-med
+ ia/main/media/outer/2026-11/5b38326c0b5e_carrusel_2026-11-16_v1_03.jpg\nht
+ tps://raw.githubusercontent.com/outerwearstreet/contenido-media/main/media
+ /outer/2026-11/5f858ab5718d_carrusel_2026-11-16_v1_04.jpg\nhttps://raw.git
+ hubusercontent.com/outerwearstreet/contenido-media/main/media/outer/2026-1
+ 1/43758cb4c7b6_carrusel_2026-11-16_v1_05.jpg\nhttps://raw.githubuserconten
+ t.com/outerwearstreet/contenido-media/main/media/outer/2026-11/08fdda45f12
+ f_carrusel_2026-11-16_v1_06.jpg\nhttps://raw.githubusercontent.com/outerwe
+ arstreet/contenido-media/main/media/outer/2026-11/f3c9ae6ec634_carrusel_20
+ 26-11-16_v1_07.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/cont
+ enido-media/main/media/outer/2026-11/86ff631f3cc4_carrusel_2026-11-16_v1_0
+ 8.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-media/m
+ ain/media/outer/2026-11/7881cffd0590_carrusel_2026-11-16_v1_09.jpg\nhttps:
+ //raw.githubusercontent.com/outerwearstreet/contenido-media/main/media/out
+ er/2026-11/805fb9e6b9cf_carrusel_2026-11-16_v1_10.jpg\n\nCaption:\nPantalo
+ nes baggy para estrenar en Navidad 🎄🔥 Envío gratis a toda Guatemala
+  🇬🇹 Pagas al recibir. #streetwear #baggyjeans #guatemala #aesthetic 
+ #moda
+URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
+ media/outer/2026-11/350fda487950_carrusel_2026-11-16_v1_01.jpg
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · ⏳ sin program
+ ar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:63b7ea12c0ab3f181312fe09@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261117T010000Z
 DTEND:20261117T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1265,8 +1307,48 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:a9ab0bf15886a41d72ca84e7@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
+DTSTART:20261117T190000Z
+DTEND:20261117T191500Z
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
+ sica en IG y TikTok\nArchivos (10):\nhttps://raw.githubusercontent.com/out
+ erwearstreet/contenido-media/main/media/alpha/2026-11/257d3a0a4eae_carruse
+ l_2026-11-17_v1_01.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/
+ contenido-media/main/media/alpha/2026-11/d4ee6d621d22_carrusel_2026-11-17_
+ v1_02.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-med
+ ia/main/media/alpha/2026-11/822ad4e9b501_carrusel_2026-11-17_v1_03.jpg\nht
+ tps://raw.githubusercontent.com/outerwearstreet/contenido-media/main/media
+ /alpha/2026-11/83cfc8aba04e_carrusel_2026-11-17_v1_04.jpg\nhttps://raw.git
+ hubusercontent.com/outerwearstreet/contenido-media/main/media/alpha/2026-1
+ 1/11b38af659ec_carrusel_2026-11-17_v1_05.jpg\nhttps://raw.githubuserconten
+ t.com/outerwearstreet/contenido-media/main/media/alpha/2026-11/0d994dfffe8
+ d_carrusel_2026-11-17_v1_06.jpg\nhttps://raw.githubusercontent.com/outerwe
+ arstreet/contenido-media/main/media/alpha/2026-11/4c1f3303067c_carrusel_20
+ 26-11-17_v1_07.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/cont
+ enido-media/main/media/alpha/2026-11/68d8b74203d3_carrusel_2026-11-17_v1_0
+ 8.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-media/m
+ ain/media/alpha/2026-11/94abcea627df_carrusel_2026-11-17_v1_09.jpg\nhttps:
+ //raw.githubusercontent.com/outerwearstreet/contenido-media/main/media/alp
+ ha/2026-11/6585e9034caf_carrusel_2026-11-17_v1_10.jpg\n\nCaption:\nCamisas
+  para las cenas de diciembre 🎄 Envíos a toda Guatemala 🇬🇹 #oldmo
+ ney #menswear #guatemala #aesthetic #moda
+URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
+ media/alpha/2026-11/257d3a0a4eae_carrusel_2026-11-17_v1_01.jpg
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · ⏳ sin program
+ ar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1961d59f976fc260a7fd82ec@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261118T010000Z
 DTEND:20261118T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1289,19 +1371,60 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2a6ace99171277c090fc9c08@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+UID:f1a66a887ee4b07faca8ae3b@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
+DTSTART:20261118T190000Z
+DTEND:20261118T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
+ sica en IG y TikTok\nArchivos (10):\nhttps://raw.githubusercontent.com/out
+ erwearstreet/contenido-media/main/media/outer/2026-11/7e3b05d34fa6_carruse
+ l_2026-11-18_v1_01.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/
+ contenido-media/main/media/outer/2026-11/0a1590289df3_carrusel_2026-11-18_
+ v1_02.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-med
+ ia/main/media/outer/2026-11/0a69113841dc_carrusel_2026-11-18_v1_03.jpg\nht
+ tps://raw.githubusercontent.com/outerwearstreet/contenido-media/main/media
+ /outer/2026-11/0e6095b67d84_carrusel_2026-11-18_v1_04.jpg\nhttps://raw.git
+ hubusercontent.com/outerwearstreet/contenido-media/main/media/outer/2026-1
+ 1/f2484055b2d3_carrusel_2026-11-18_v1_05.jpg\nhttps://raw.githubuserconten
+ t.com/outerwearstreet/contenido-media/main/media/outer/2026-11/5a0aec4e040
+ a_carrusel_2026-11-18_v1_06.jpg\nhttps://raw.githubusercontent.com/outerwe
+ arstreet/contenido-media/main/media/outer/2026-11/61a474c93b73_carrusel_20
+ 26-11-18_v1_07.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/cont
+ enido-media/main/media/outer/2026-11/4eb34797f888_carrusel_2026-11-18_v1_0
+ 8.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-media/m
+ ain/media/outer/2026-11/9be0836929f9_carrusel_2026-11-18_v1_09.jpg\nhttps:
+ //raw.githubusercontent.com/outerwearstreet/contenido-media/main/media/out
+ er/2026-11/cea5938a7ec6_carrusel_2026-11-18_v1_10.jpg\n\nCaption:\nPantalo
+ nes con flow para estrenar en Navidad 🎄🔥 Envío gratis a toda Guatem
+ ala 🇬🇹 Pagas al recibir. #streetwear #baggyjeans #guatemala #aesthet
+ ic #moda
+URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
+ media/outer/2026-11/7e3b05d34fa6_carrusel_2026-11-18_v1_01.jpg
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · ⏳ sin program
+ ar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f2173d291472128abc791bc6@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
 DTSTART:20261119T010000Z
 DTEND:20261119T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
 DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
  sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
- treet/contenido-media/main/media/outer/2026-11/f781c7375469_outer_pilaA2_v
- 8_buffer.mp4\n\nCaption:\nLos mejores pantalones bootcut para tirar flow 
- 🔥 Envío gratis a toda Guatemala 🇬🇹 Pagas al recibir. #streetwear
-  #bootcutjeans #guatemala #aesthetic #moda
+ treet/contenido-media/main/media/outer/2026-11/eba1616dd233_outer_pilaA2_v
+ 8_hq_buffer.mp4\n\nCaption:\nLos mejores pantalones bootcut para tirar flo
+ w 🔥 Envío gratis a toda Guatemala 🇬🇹 Pagas al recibir. #streetwe
+ ar #bootcutjeans #guatemala #aesthetic #moda
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
- media/outer/2026-11/f781c7375469_outer_pilaA2_v8_buffer.mp4
+ media/outer/2026-11/eba1616dd233_outer_pilaA2_v8_hq_buffer.mp4
 CATEGORIES:Outer
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -1313,8 +1436,48 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:0b437f674a6c610f75177f0a@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
+DTSTART:20261119T190000Z
+DTEND:20261119T191500Z
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
+ sica en IG y TikTok\nArchivos (10):\nhttps://raw.githubusercontent.com/out
+ erwearstreet/contenido-media/main/media/alpha/2026-11/26b64daffd5d_carruse
+ l_2026-11-19_v1_01.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/
+ contenido-media/main/media/alpha/2026-11/a6c1ab085c11_carrusel_2026-11-19_
+ v1_02.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-med
+ ia/main/media/alpha/2026-11/9dccb6486096_carrusel_2026-11-19_v1_03.jpg\nht
+ tps://raw.githubusercontent.com/outerwearstreet/contenido-media/main/media
+ /alpha/2026-11/97c7aba204a9_carrusel_2026-11-19_v1_04.jpg\nhttps://raw.git
+ hubusercontent.com/outerwearstreet/contenido-media/main/media/alpha/2026-1
+ 1/c8b139bb789d_carrusel_2026-11-19_v1_05.jpg\nhttps://raw.githubuserconten
+ t.com/outerwearstreet/contenido-media/main/media/alpha/2026-11/b79de93f970
+ 9_carrusel_2026-11-19_v1_06.jpg\nhttps://raw.githubusercontent.com/outerwe
+ arstreet/contenido-media/main/media/alpha/2026-11/e27d43f8b24d_carrusel_20
+ 26-11-19_v1_07.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/cont
+ enido-media/main/media/alpha/2026-11/14d4acdeacf8_carrusel_2026-11-19_v1_0
+ 8.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-media/m
+ ain/media/alpha/2026-11/1813306deaa9_carrusel_2026-11-19_v1_09.jpg\nhttps:
+ //raw.githubusercontent.com/outerwearstreet/contenido-media/main/media/alp
+ ha/2026-11/3b220799bd0b_carrusel_2026-11-19_v1_10.jpg\n\nCaption:\nPantalo
+ nes para estrenar en Navidad ✨ Envíos a toda Guatemala 🇬🇹 #oldmon
+ ey #menswear #guatemala #aesthetic #moda
+URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
+ media/alpha/2026-11/26b64daffd5d_carrusel_2026-11-19_v1_01.jpg
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · ⏳ sin program
+ ar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ea5386d204024d7a587f2c63@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261120T010000Z
 DTEND:20261120T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1337,8 +1500,48 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:6807d3706ba9299957c36f86@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
+DTSTART:20261120T190000Z
+DTEND:20261120T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
+ sica en IG y TikTok\nArchivos (10):\nhttps://raw.githubusercontent.com/out
+ erwearstreet/contenido-media/main/media/outer/2026-11/15f5dce310a6_carruse
+ l_2026-11-20_v1_01.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/
+ contenido-media/main/media/outer/2026-11/7cad801cb585_carrusel_2026-11-20_
+ v1_02.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-med
+ ia/main/media/outer/2026-11/3299609ec672_carrusel_2026-11-20_v1_03.jpg\nht
+ tps://raw.githubusercontent.com/outerwearstreet/contenido-media/main/media
+ /outer/2026-11/9a5b7b9dd9b7_carrusel_2026-11-20_v1_04.jpg\nhttps://raw.git
+ hubusercontent.com/outerwearstreet/contenido-media/main/media/outer/2026-1
+ 1/ccbd6e9c5c30_carrusel_2026-11-20_v1_05.jpg\nhttps://raw.githubuserconten
+ t.com/outerwearstreet/contenido-media/main/media/outer/2026-11/4976686c8cf
+ 3_carrusel_2026-11-20_v1_06.jpg\nhttps://raw.githubusercontent.com/outerwe
+ arstreet/contenido-media/main/media/outer/2026-11/10c3659280f5_carrusel_20
+ 26-11-20_v1_07.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/cont
+ enido-media/main/media/outer/2026-11/6830c143ef6d_carrusel_2026-11-20_v1_0
+ 8.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-media/m
+ ain/media/outer/2026-11/842e49f674b1_carrusel_2026-11-20_v1_09.jpg\nhttps:
+ //raw.githubusercontent.com/outerwearstreet/contenido-media/main/media/out
+ er/2026-11/a1bcdfd8be62_carrusel_2026-11-20_v1_10.jpg\n\nCaption:\nJackets
+  para el frío navideño 🥶🎄 Envío gratis a toda Guatemala 🇬🇹 
+ Pagas al recibir. #streetwear #baggyjeans #guatemala #aesthetic #moda
+URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
+ media/outer/2026-11/15f5dce310a6_carrusel_2026-11-20_v1_01.jpg
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · ⏳ sin program
+ ar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:34622c8718ec2ae1aa335e81@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261121T010000Z
 DTEND:20261121T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1362,7 +1565,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:7f8b9eebedcff4b45bd75d35@contenido-outer-alpha
-DTSTAMP:20261105T130133Z
+DTSTAMP:20261106T001004Z
 DTSTART:20261122T010000Z
 DTEND:20261122T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
@@ -1374,6 +1577,95 @@ DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
   #jorts #guatemala #aesthetic #moda
 URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
  media/outer/2026-11/4568376c38e0_outer_pilaH2_v7_buffer.mp4
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · ⏳ sin programar. 
+ 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:087a0750fb120c629447c886@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
+DTSTART:20261123T010000Z
+DTEND:20261123T011500Z
+SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
+ sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
+ treet/contenido-media/main/media/outer/2026-11/17d3e89a2f63_auto_IMG_3557_
+ ref1_v1_buffer.mp4\n\nCaption:\nLos mejores pantalones baggy cargo que nad
+ ie tiene 🔥 Envío gratis a toda Guatemala 🇬🇹 Pagas al recibir. #s
+ treetwear #baggyjeans #guatemala #aesthetic #moda
+URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
+ media/outer/2026-11/17d3e89a2f63_auto_IMG_3557_ref1_v1_buffer.mp4
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · ⏳ sin programar. 
+ 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1d61db55fdfc6a89dc14e87d@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
+DTSTART:20261123T190000Z
+DTEND:20261123T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
+ sica en IG y TikTok\nArchivos (10):\nhttps://raw.githubusercontent.com/out
+ erwearstreet/contenido-media/main/media/outer/2026-11/18735b35fed4_carruse
+ l_2026-11-23_v1_01.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/
+ contenido-media/main/media/outer/2026-11/4906e46c4ad2_carrusel_2026-11-23_
+ v1_02.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-med
+ ia/main/media/outer/2026-11/faaeb121b029_carrusel_2026-11-23_v1_03.jpg\nht
+ tps://raw.githubusercontent.com/outerwearstreet/contenido-media/main/media
+ /outer/2026-11/1f574a75ffda_carrusel_2026-11-23_v1_04.jpg\nhttps://raw.git
+ hubusercontent.com/outerwearstreet/contenido-media/main/media/outer/2026-1
+ 1/172bb12a464b_carrusel_2026-11-23_v1_05.jpg\nhttps://raw.githubuserconten
+ t.com/outerwearstreet/contenido-media/main/media/outer/2026-11/29ca8f8a90c
+ 7_carrusel_2026-11-23_v1_06.jpg\nhttps://raw.githubusercontent.com/outerwe
+ arstreet/contenido-media/main/media/outer/2026-11/5f4542dda262_carrusel_20
+ 26-11-23_v1_07.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/cont
+ enido-media/main/media/outer/2026-11/c7ef1c684804_carrusel_2026-11-23_v1_0
+ 8.jpg\nhttps://raw.githubusercontent.com/outerwearstreet/contenido-media/m
+ ain/media/outer/2026-11/f9ca25e636b3_carrusel_2026-11-23_v1_09.jpg\nhttps:
+ //raw.githubusercontent.com/outerwearstreet/contenido-media/main/media/out
+ er/2026-11/b3a73193567e_carrusel_2026-11-23_v1_10.jpg\n\nCaption:\nPantalo
+ nes baggy para estrenar en Navidad 🎄🔥 Envío gratis a toda Guatemala
+  🇬🇹 Pagas al recibir. #streetwear #baggyjeans #guatemala #aesthetic 
+ #moda
+URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
+ media/outer/2026-11/18735b35fed4_carrusel_2026-11-23_v1_01.jpg
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · ⏳ sin program
+ ar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:5a798daa0ae5b95c246f9bad@contenido-outer-alpha
+DTSTAMP:20261106T001004Z
+DTSTART:20261124T010000Z
+DTEND:20261124T011500Z
+SUMMARY:🎬 Outer · Reel 7:00 PM · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🎵 Ponle mú
+ sica en IG y TikTok\nArchivo: https://raw.githubusercontent.com/outerwears
+ treet/contenido-media/main/media/outer/2026-11/a767c678b699_auto_IMG_3557_
+ ref2_v1_buffer.mp4\n\nCaption:\nPantalones baggy cargo que todo Guate anda
+  buscando 🔥 Envío gratis a toda Guatemala 🇬🇹 Pagas al recibir. #
+ streetwear #baggyjeans #guatemala #aesthetic #moda
+URL:https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/
+ media/outer/2026-11/a767c678b699_auto_IMG_3557_ref2_v1_buffer.mp4
 CATEGORIES:Outer
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
