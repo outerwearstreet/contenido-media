@@ -108,6 +108,7 @@
   var q = new URLSearchParams(location.search);
   var PRENDA = (q.get('g') || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40);
   var NFOTOS = parseInt(q.get('n') || '0', 10) || 0;
+  var FOTOS = (q.get('f') || '').split(',').filter(function (x) { return /^[A-Za-z0-9_-]{20,250}$/.test(x); }).slice(0, 6);
 
   var MARCAS = [['outerwear', 'Outer'], ['alpha', 'Alpha'], ['ambas', 'Ambas']];
   var ARRIBA = ['S', 'M', 'L', 'XL', 'XXL'];
@@ -182,7 +183,7 @@
 
   function num(x) { var n = parseFloat(String(x).replace(',', '.')); return isFinite(n) ? n : NaN; }
   function datos() {
-    var c = cat(), e = {}, d = {v: 1, g: PRENDA};
+    var c = cat(), e = {}, d = {v: 1, g: PRENDA, f: FOTOS};
     d.marca = v.marca; if (!d.marca) e.marca = 'Elige la marca';
     d.categoria = v.categoria; if (!d.categoria) e.categoria = 'Elige la categoría';
     d.nombre = $('nombre').value.replace(/\s+/g, ' ').trim();
