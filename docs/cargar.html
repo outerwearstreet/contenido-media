@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cargar prenda</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+  :root {
+    --bg: var(--tg-theme-bg-color, #ffffff);
+    --tx: var(--tg-theme-text-color, #111111);
+    --hint: var(--tg-theme-hint-color, #8a8a8a);
+    --sec: var(--tg-theme-secondary-bg-color, #f2f2f4);
+    --acc: var(--tg-theme-button-color, #111111);
+    --acc-tx: var(--tg-theme-button-text-color, #ffffff);
+    --err: #d93025;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--tx);
+    font: 16px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { padding: 14px 16px 110px; max-width: 560px; margin: 0 auto; }
+  h1 { font-size: 19px; margin: 2px 0 2px; }
+  .sub { color: var(--hint); font-size: 13px; margin-bottom: 14px; }
+  section { margin: 0 0 16px; }
+  label.t { display: block; font-weight: 600; font-size: 14px; margin-bottom: 7px; }
+  label.t small { color: var(--hint); font-weight: 400; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip { border: 0; background: var(--sec); color: var(--tx); padding: 9px 13px; border-radius: 18px;
+    font-size: 15px; cursor: pointer; }
+  .chip.on { background: var(--acc); color: var(--acc-tx); }
+  input[type=text], input[type=number] { width: 100%; padding: 11px 12px; border-radius: 10px; border: 1px solid transparent;
+    background: var(--sec); color: var(--tx); font-size: 16px; outline: none; }
+  input:focus { border-color: var(--acc); }
+  .fila { display: flex; gap: 8px; align-items: center; }
+  .fila span { color: var(--hint); }
+  .otro { margin-top: 8px; display: none; }
+  .otro.on { display: block; }
+  .err { color: var(--err); font-size: 13px; min-height: 16px; margin-top: 4px; }
+  .resumen { background: var(--sec); border-radius: 12px; padding: 12px; font-size: 14px; white-space: pre-line; }
+  #enviar { position: fixed; left: 16px; right: 16px; bottom: 16px; padding: 14px; border: 0; border-radius: 12px;
+    background: var(--acc); color: var(--acc-tx); font-size: 17px; font-weight: 600; display: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Cargar prenda</h1>
+  <div class="sub" id="sub">Llena los datos y toca «Publicar». La prenda sale de una vez en el catálogo.</div>
+
+  <section>
+    <label class="t">Marca</label>
+    <div class="chips" id="marca"></div>
+    <div class="err" id="e-marca"></div>
+  </section>
+
+  <section>
+    <label class="t">Categoría</label>
+    <div class="chips" id="categoria"></div>
+    <div class="err" id="e-categoria"></div>
+  </section>
+
+  <section>
+    <label class="t" for="nombre">Nombre <small>(como sale en el catálogo)</small></label>
+    <input type="text" id="nombre" maxlength="80" autocomplete="off" placeholder="Ej. Pantalón Baggy Empyre">
+    <div class="err" id="e-nombre"></div>
+  </section>
+
+  <section>
+    <label class="t">Talla</label>
+    <div class="chips" id="talla"><span class="sub">Primero elige la categoría</span></div>
+    <input type="text" class="otro" id="talla-otro" maxlength="20" placeholder="Escribe la talla">
+    <div class="err" id="e-talla"></div>
+  </section>
+
+  <section>
+    <label class="t">Medidas en cm <small id="med-op">(ancho × largo)</small></label>
+    <div class="fila">
+      <input type="number" id="ancho" inputmode="decimal" min="1" max="300" placeholder="Ancho">
+      <span>×</span>
+      <input type="number" id="largo" inputmode="decimal" min="1" max="300" placeholder="Largo">
+    </div>
+    <div class="err" id="e-medidas"></div>
+  </section>
+
+  <section>
+    <label class="t">Cantidad</label>
+    <div class="chips" id="cantidad"></div>
+    <input type="number" class="otro" id="cantidad-otro" inputmode="numeric" min="1" max="500" placeholder="Escribe la cantidad">
+    <div class="err" id="e-cantidad"></div>
+  </section>
+
+  <section>
+    <label class="t">Precio (Q)</label>
+    <div class="chips" id="precio"></div>
+    <input type="number" class="otro" id="precio-otro" inputmode="numeric" min="1" max="20000" placeholder="Escribe el precio">
+    <div class="err" id="e-precio"></div>
+  </section>
+
+  <section>
+    <label class="t">Revisa antes de publicar</label>
+    <div class="resumen" id="resumen">—</div>
+  </section>
+</main>
+<button id="enviar" type="button">Publicar</button>
+
+<script>
+(function () {
+  var tg = window.Telegram && window.Telegram.WebApp;
+  var q = new URLSearchParams(location.search);
+  var PRENDA = (q.get('g') || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40);
+  var NFOTOS = parseInt(q.get('n') || '0', 10) || 0;
+
+  var MARCAS = [['outerwear', 'Outer'], ['alpha', 'Alpha'], ['ambas', 'Ambas']];
+  var ARRIBA = ['S', 'M', 'L', 'XL', 'XXL'];
+  // categorías con costo definido (el costo NO está aquí: lo pone el Dashboard/servidor según la categoría)
+  var CATS = [
+    {id: 'PANTALONES', t: 'Pantalones', pre: 'Pantalón ', med: true,
+      tallas: ['28x30', '30x30', '30x32', '32x30', '32x32', '34x30', '34x32', '36x30', '36x32', '38x30', '40x30']},
+    {id: 'CALZONETAS', t: 'Calzonetas', pre: 'Calzoneta ', med: true, tallas: ['28', '30', '32', '34', '36', '38'].concat(ARRIBA)},
+    {id: 'CAMISA', t: 'Camisas', pre: 'Camisa ', med: true, tallas: ARRIBA},
+    {id: 'JACKETS Y CREWNECKS', t: 'Jackets / Crewnecks', pre: '', med: true, tallas: ARRIBA},
+    {id: 'SUETERES', t: 'Suéteres', pre: 'Suéter ', med: true, tallas: ARRIBA},
+    {id: 'MANGAS LARGAS', t: 'Mangas largas', pre: 'Manga larga ', med: true, tallas: ARRIBA},
+    {id: 'CORTAVIENTOS Y PUFFERS', t: 'Cortavientos / Puffers', pre: '', med: true, tallas: ARRIBA},
+    {id: 'ZAPATOS', t: 'Zapatos', pre: 'Zapatos ', med: false, tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12']}
+  ];
+  var PRECIOS = [150, 180, 200, 250, 280, 300, 350, 400, 450];
+  var CANTIDADES = [1, 2, 3, 4, 5];
+  var OTRO = '__otro__';
+
+  var v = {marca: null, categoria: null, talla: null, cantidad: 1, precio: null};
+
+  function $(id) { return document.getElementById(id); }
+  function chips(cont, opciones, clave, conOtro, alCambiar) {
+    cont.innerHTML = '';
+    opciones.forEach(function (o) {
+      var val = Array.isArray(o) ? o[0] : o, txt = Array.isArray(o) ? o[1] : String(o);
+      cont.appendChild(chip(txt, val, clave, alCambiar));
+    });
+    if (conOtro) cont.appendChild(chip(clave === 'precio' ? 'Otro' : 'Otra', OTRO, clave, alCambiar));
+    pintar(cont, clave);
+  }
+  function chip(txt, val, clave, alCambiar) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.textContent = txt; b.dataset.v = String(val);
+    b.onclick = function () {
+      v[clave] = val;
+      pintar(b.parentNode, clave);
+      var otro = $(clave + '-otro');
+      if (otro) { otro.classList.toggle('on', val === OTRO); if (val === OTRO) otro.focus(); }
+      if (tg && tg.HapticFeedback) tg.HapticFeedback.selectionChanged();
+      if (alCambiar) alCambiar(val);
+      actualizar();
+    };
+    return b;
+  }
+  function pintar(cont, clave) {
+    [].forEach.call(cont.querySelectorAll('.chip'), function (b) { b.classList.toggle('on', b.dataset.v === String(v[clave])); });
+  }
+  function cat() { return CATS.filter(function (c) { return c.id === v.categoria; })[0]; }
+
+  chips($('marca'), MARCAS, 'marca', false);
+  chips($('categoria'), CATS.map(function (c) { return [c.id, c.t]; }), 'categoria', false, function () {
+    var c = cat();
+    v.talla = null;
+    $('talla-otro').classList.remove('on');
+    chips($('talla'), c.tallas, 'talla', true);
+    var n = $('nombre');
+    if (!n.value.trim() || CATS.some(function (x) { return x.pre && n.value === x.pre; })) n.value = c.pre;
+    $('med-op').textContent = c.med ? '(ancho × largo)' : '(opcional)';
+  });
+  chips($('cantidad'), CANTIDADES, 'cantidad', true);
+  chips($('precio'), PRECIOS, 'precio', true);
+  if (NFOTOS) $('sub').textContent = 'Prenda con ' + NFOTOS + ' foto' + (NFOTOS === 1 ? '' : 's') +
+    '. Llena los datos y toca «Publicar»: sale de una vez en el catálogo.';
+
+  ['nombre', 'ancho', 'largo', 'talla-otro', 'cantidad-otro', 'precio-otro'].forEach(function (id) {
+    $(id).addEventListener('input', actualizar);
+  });
+
+  function num(x) { var n = parseFloat(String(x).replace(',', '.')); return isFinite(n) ? n : NaN; }
+  function datos() {
+    var c = cat(), e = {}, d = {v: 1, g: PRENDA};
+    d.marca = v.marca; if (!d.marca) e.marca = 'Elige la marca';
+    d.categoria = v.categoria; if (!d.categoria) e.categoria = 'Elige la categoría';
+    d.nombre = $('nombre').value.replace(/\s+/g, ' ').trim();
+    if (d.nombre.length < 4 || (c && d.nombre === c.pre.trim())) e.nombre = 'Escribe el nombre completo';
+    d.talla = v.talla === OTRO ? $('talla-otro').value.trim() : v.talla;
+    if (!d.talla) e.talla = 'Elige o escribe la talla';
+    var a = num($('ancho').value), l = num($('largo').value);
+    if ($('ancho').value || $('largo').value) {
+      if (!(a > 0 && a < 300 && l > 0 && l < 300)) e.medidas = 'Pon ancho y largo en cm (ej. 38 × 99)';
+      else d.medidas = (Math.round(a * 10) / 10) + 'x' + (Math.round(l * 10) / 10);
+    } else if (c && c.med) e.medidas = 'Pon ancho y largo en cm';
+    d.cantidad = v.cantidad === OTRO ? parseInt($('cantidad-otro').value, 10) : v.cantidad;
+    if (!(d.cantidad >= 1 && d.cantidad <= 500)) e.cantidad = 'Cantidad entre 1 y 500';
+    d.precio = v.precio === OTRO ? Math.round(num($('precio-otro').value)) : v.precio;
+    if (!(d.precio >= 1 && d.precio <= 20000)) e.precio = 'Elige o escribe el precio';
+    if (!PRENDA) e.nombre = 'Abre este formulario desde el botón del bot';
+    return {d: d, e: e};
+  }
+  var tocado = false;
+  function actualizar() {
+    var r = datos(), c = cat(), d = r.d;
+    ['marca', 'categoria', 'nombre', 'talla', 'medidas', 'cantidad', 'precio'].forEach(function (k) {
+      $('e-' + k).textContent = tocado ? (r.e[k] || '') : '';
+    });
+    var marca = (MARCAS.filter(function (m) { return m[0] === d.marca; })[0] || [0, '—'])[1];
+    $('resumen').textContent =
+      'Nombre: ' + (d.nombre || '—') + '\nCategoría: ' + (c ? c.t : '—') + '\nTalla: ' + (d.talla ? String(d.talla).toUpperCase() : '—') +
+      '\nMedidas: ' + (d.medidas || '—') + '\nCantidad: ' + (d.cantidad || '—') + '\nPrecio: ' + (d.precio ? 'Q' + d.precio : '—') +
+      '\nMarca: ' + marca;
+  }
+  function enviar() {
+    tocado = true;
+    var r = datos();
+    actualizar();
+    if (Object.keys(r.e).length) {
+      if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
+      var k = Object.keys(r.e)[0], el = $('e-' + k);
+      if (el && el.scrollIntoView) el.scrollIntoView({behavior: 'smooth', block: 'center'});
+      return;
+    }
+    var json = JSON.stringify(r.d);
+    if (tg && tg.sendData) { tg.sendData(json); } else { alert('Abre este formulario desde Telegram.'); }
+  }
+
+  if (tg) {
+    tg.ready(); tg.expand();
+    tg.MainButton.setText('Publicar');
+    tg.MainButton.onClick(enviar);
+    tg.MainButton.show();
+  } else {
+    $('enviar').style.display = 'block';
+    $('enviar').onclick = enviar;
+  }
+  actualizar();
+})();
+</script>
+</body>
+</html>
