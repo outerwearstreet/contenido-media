@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ficha de prendas</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+  :root {
+    --bg: var(--tg-theme-bg-color, #ffffff);
+    --tx: var(--tg-theme-text-color, #111111);
+    --hint: var(--tg-theme-hint-color, #8a8a8a);
+    --sec: var(--tg-theme-secondary-bg-color, #f2f2f4);
+    --acc: var(--tg-theme-button-color, #111111);
+    --acc-tx: var(--tg-theme-button-text-color, #ffffff);
+    --err: #d93025;
+    --ok: #1e8e3e;
+    --arr: #b06000;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--tx); overflow-x: hidden;
+    font: 16px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { padding: 14px 16px 110px; max-width: 560px; margin: 0 auto; }
+  h1 { font-size: 19px; margin: 2px 0 2px; }
+  .sub { color: var(--hint); font-size: 13px; margin-bottom: 12px; }
+  .aviso { border-radius: 12px; padding: 12px; font-size: 15px; margin-bottom: 14px; display: none; }
+  .aviso.on { display: block; }
+  .aviso.ok { background: rgba(30, 142, 62, .12); color: var(--ok); font-weight: 600; }
+  .aviso.mal { background: rgba(217, 48, 37, .1); color: var(--err); }
+  .todas { display: flex; gap: 8px; align-items: center; background: var(--sec); border-radius: 12px; padding: 10px;
+    margin-bottom: 14px; }
+  .todas span { font-size: 13px; color: var(--hint); flex: 1 1 auto; }
+  .todas button { border: 0; border-radius: 10px; padding: 10px 12px; background: var(--acc); color: var(--acc-tx);
+    font-size: 14px; flex: 0 0 auto; }
+  .prenda { border: 1px solid var(--sec); border-radius: 14px; padding: 10px; margin-bottom: 14px; }
+  .prenda.falta { border-color: var(--err); }
+  .prenda.arr { border-color: var(--arr); background: rgba(176, 96, 0, .06); }
+  .cab { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .num { color: #dc1e1e; font-weight: 800; font-size: 24px; min-width: 30px; }
+  .cab .n { color: var(--hint); font-size: 13px; flex: 1 1 auto; }
+  .fotos { display: flex; gap: 6px; overflow-x: auto; margin: 0 -10px 8px; padding: 0 10px 2px; scroll-snap-type: x mandatory; }
+  .fotos img { height: 300px; width: auto; max-width: 82%; border-radius: 10px; background: #fff; object-fit: contain;
+    border: 1px solid var(--sec); flex: 0 0 auto; scroll-snap-align: start; }
+  .fotos .sin { color: var(--hint); font-size: 13px; padding: 6px 0; }
+  .precio { display: flex; align-items: center; gap: 8px; }
+  .precio b { font-size: 18px; }
+  .acciones { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .acciones button { border: 0; border-radius: 16px; padding: 8px 11px; background: var(--sec); color: var(--tx); font-size: 14px; }
+  .acciones button.on { background: var(--arr); color: #fff; }
+  input[type=number], textarea { width: 100%; padding: 11px 12px; border-radius: 10px; border: 1px solid transparent;
+    background: var(--sec); color: var(--tx); font-size: 18px; outline: none; font-family: inherit; }
+  .todas input[type=number] { width: 96px; flex: 0 0 auto; }
+  textarea { font-size: 15px; min-height: 64px; resize: vertical; margin-top: 8px; }
+  input:focus, textarea:focus { border-color: var(--acc); }
+  input:disabled, textarea:disabled, button:disabled { opacity: .6; }
+  .err { color: var(--err); font-size: 13px; margin-top: 4px; }
+  .arr-tx { color: var(--arr); font-weight: 600; font-size: 15px; }
+  #grande { position: fixed; inset: 0; background: rgba(0,0,0,.94); display: none; align-items: center;
+    justify-content: center; z-index: 9; }
+  #grande img { max-width: 100%; max-height: 100%; }
+  #enviar { position: fixed; left: 16px; right: 16px; bottom: 16px; padding: 14px; border: 0; border-radius: 12px;
+    background: var(--acc); color: var(--acc-tx); font-size: 16px; font-weight: 600; display: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Ficha de prendas</h1>
+  <div class="sub" id="sub"></div>
+  <div class="aviso" id="aviso"></div>
+  <div class="todas" id="todas">
+    <span>Mismo precio a las que están vacías</span>
+    <input type="number" id="todas-q" inputmode="numeric" min="1" max="20000" placeholder="Q">
+    <button type="button" id="todas-b">Poner</button>
+  </div>
+  <div id="lista"></div>
+  <div id="grande"><img alt=""></div>
+</main>
+<button id="enviar" type="button">Aprobar y mandar a la trabajadora</button>
+
+<script>
+(function () {
+  var tg = window.Telegram && window.Telegram.WebApp;
+  var q = new URLSearchParams(location.search);
+  var LOTE = (q.get('l') || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40);
+  var HOJA = (q.get('h') || '').replace(/[^0-9]/g, '').slice(0, 6);
+  var BASE_VISTA = 'https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/vistas/';
+  var MAX_FOTOS = 4, MAX_NOTA = 120;
+  // p = pid.fotos.vista,…  → cada foto es 'pid:k' (k = 1…n) con su vista chica vistas/<vista>/<k>.jpg
+  var PRENDAS = (q.get('p') || '').split(',').map(function (x) {
+    var a = x.split('.');
+    return {pid: (a[0] || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40), n: Math.min(parseInt(a[1] || '0', 10) || 0, MAX_FOTOS),
+            vista: (a[2] || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40)};
+  }).filter(function (x) { return x.pid && x.n; }).slice(0, 150);
+  var FOTO = {};                                  // 'pid:k' → url de la vista ('' si no hay)
+  var tarjetas = PRENDAS.map(function (p) {
+    var f = [];
+    for (var k = 1; k <= p.n; k++) { var r = p.pid + ':' + k; f.push(r); FOTO[r] = p.vista ? BASE_VISTA + p.vista + '/' + k + '.jpg' : ''; }
+    return {f: f, q: '', a: false, x: ''};
+  });
+  var CLAVE = 'ficha_' + LOTE + '_' + HOJA;     // una sola vez por ficha (Telegram CloudStorage + el teléfono)
+  var enviado = false, enviando = false, tocado = false;
+
+  function $(id) { return document.getElementById(id); }
+  function aviso(txt, tipo) { var a = $('aviso'); a.textContent = txt; a.className = 'aviso on ' + tipo; }
+  function quitarAviso() { $('aviso').className = 'aviso'; }
+  function num(x) { var n = parseFloat(String(x).replace(',', '.')); return isFinite(n) ? Math.round(n) : NaN; }
+  function haptic(t) { try { if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred(t); } catch (e) {} }
+  function okQ(v) { return v >= 1 && v <= 20000; }
+  var grande = $('grande');
+  grande.onclick = function () { grande.style.display = 'none'; };
+
+  // ---------- dibujar
+  function dibujar() {
+    var lista = $('lista');
+    lista.innerHTML = '';
+    tarjetas.forEach(function (t, i) {
+      var box = document.createElement('div');
+      var falta = tocado && !t.a && !okQ(num(t.q));
+      box.className = 'prenda' + (t.a ? ' arr' : '') + (falta ? ' falta' : '');
+      box.id = 'pr-' + i;
+      var cab = document.createElement('div'); cab.className = 'cab';
+      cab.innerHTML = '<span class="num">' + (i + 1) + '</span><span class="n">' + t.f.length + ' foto' + (t.f.length === 1 ? '' : 's') + '</span>';
+      box.appendChild(cab);
+      var fotos = document.createElement('div'); fotos.className = 'fotos';
+      t.f.forEach(function (r) {
+        if (!FOTO[r]) return;
+        var im = document.createElement('img');
+        im.alt = 'Prenda ' + (i + 1); im.loading = 'lazy'; im.src = FOTO[r];
+        im.onerror = function () { this.remove(); };
+        im.onclick = function () { grande.querySelector('img').src = this.src; grande.style.display = 'flex'; };
+        fotos.appendChild(im);
+      });
+      if (!fotos.children.length) fotos.innerHTML = '<div class="sin">Sin foto en la ficha (no se pudo subir).</div>';
+      box.appendChild(fotos);
+      if (!t.a) {
+        var pr = document.createElement('div'); pr.className = 'precio';
+        pr.innerHTML = '<b>Q</b><input type="number" inputmode="numeric" min="1" max="20000" placeholder="Precio al público">';
+        var inp = pr.querySelector('input'); inp.value = t.q; inp.disabled = enviado;
+        inp.addEventListener('input', function () { t.q = inp.value; box.classList.remove('falta');
+          var e = box.querySelector('.err'); if (e) e.remove(); actualizar(); });
+        box.appendChild(pr);
+        if (falta) { var e = document.createElement('div'); e.className = 'err'; e.textContent = 'Falta el precio'; box.appendChild(e); }
+      } else {
+        var at = document.createElement('div'); at.className = 'arr-tx'; at.textContent = '🔧 Se aparta para arreglarla (no le llega a la trabajadora)';
+        box.appendChild(at);
+        var ta = document.createElement('textarea'); ta.maxLength = MAX_NOTA; ta.disabled = enviado;
+        ta.placeholder = '¿Qué está mal? (opcional) Ej.: se comió la entrepierna';
+        ta.value = t.x; ta.addEventListener('input', function () { t.x = ta.value; });
+        box.appendChild(ta);
+      }
+      if (!enviado) {
+        var ac = document.createElement('div'); ac.className = 'acciones';
+        boton(ac, t.a ? '↩️ Ya no arreglar' : '🔧 Arreglar', t.a, function () { t.a = !t.a; dibujar(); });
+        if (t.f.length > 1) boton(ac, '✂️ Separar (' + t.f.length + ' prendas)', false, function () { separar(i); });
+        if (i > 0 && tarjetas[i - 1].f.length + t.f.length <= MAX_FOTOS)
+          boton(ac, '🔗 Juntar con la ' + i, false, function () { juntar(i); });
+        box.appendChild(ac);
+      }
+      lista.appendChild(box);
+    });
+    actualizar();
+  }
+  function boton(cont, txt, on, fn) {
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
+    if (on) b.className = 'on';
+    b.onclick = function () { if (!enviado) { fn(); try { tg && tg.HapticFeedback && tg.HapticFeedback.selectionChanged(); } catch (e) {} } };
+    cont.appendChild(b);
+  }
+  function separar(i) {
+    var t = tarjetas[i];
+    var partes = t.f.map(function (r) { return {f: [r], q: t.q, a: t.a, x: t.x}; });
+    tarjetas.splice.apply(tarjetas, [i, 1].concat(partes));
+    dibujar();
+  }
+  function juntar(i) {
+    var a = tarjetas[i - 1], b = tarjetas[i];
+    if (a.f.length + b.f.length > MAX_FOTOS) return;
+    a.f = a.f.concat(b.f); if (!a.q) a.q = b.q; a.a = a.a && b.a; a.x = a.x || b.x;
+    tarjetas.splice(i, 1);
+    dibujar();
+  }
+
+  $('todas-b').onclick = function () {
+    var v = num($('todas-q').value);
+    if (!okQ(v)) { $('todas-q').focus(); return; }
+    tarjetas.forEach(function (t) { if (!t.a && !t.q) t.q = String(v); });
+    $('todas-q').value = '';
+    dibujar();
+  };
+
+  function cuenta() {
+    var con = 0, arr = 0, falta = [];
+    tarjetas.forEach(function (t, i) { if (t.a) arr++; else if (okQ(num(t.q))) con++; else falta.push(i); });
+    return {con: con, arr: arr, falta: falta};
+  }
+  function texto() {
+    var c = cuenta();
+    return 'Aprobar y mandar (' + c.con + '/' + (tarjetas.length - c.arr) + ' con precio' + (c.arr ? ' · ' + c.arr + ' a arreglar' : '') + ')';
+  }
+  function actualizar() {
+    if (enviado) return;
+    if (tg && tg.MainButton) tg.MainButton.setText(texto()); else $('enviar').textContent = texto();
+    $('sub').textContent = tarjetas.length + ' prenda' + (tarjetas.length === 1 ? '' : 's') + '. Revisa las fotos, pon el precio ' +
+      'al público (o «🔧 Arreglar»), separa o junta si hace falta y toca «Aprobar y mandar». Se manda una sola vez.';
+  }
+
+  // ---------- una sola vez
+  function bloquear(txt) {
+    enviado = true;
+    $('todas').style.display = 'none';
+    dibujar();
+    aviso(txt, 'ok');
+    if (tg && tg.MainButton) { tg.MainButton.hideProgress(); tg.MainButton.hide(); }
+    $('enviar').style.display = 'none';
+  }
+  function guardar(valor, listo) {
+    try { localStorage.setItem(CLAVE, valor); } catch (e) {}
+    var hecho = false;
+    function fin() { if (!hecho) { hecho = true; listo(); } }
+    try {
+      if (tg && tg.CloudStorage && tg.isVersionAtLeast && tg.isVersionAtLeast('6.9')) {
+        tg.CloudStorage.setItem(CLAVE, valor.slice(0, 4000), fin);
+        setTimeout(fin, 1500);
+        return;
+      }
+    } catch (e) {}
+    fin();
+  }
+  function revisar(listo) {
+    var local = null;
+    try { local = localStorage.getItem(CLAVE); } catch (e) {}
+    if (local) { listo(local); return; }
+    try {
+      if (tg && tg.CloudStorage && tg.isVersionAtLeast && tg.isVersionAtLeast('6.9')) {
+        var hecho = false;
+        tg.CloudStorage.getItem(CLAVE, function (err, v) { if (!hecho) { hecho = true; listo(err ? null : v); } });
+        setTimeout(function () { if (!hecho) { hecho = true; listo(null); } }, 1500);
+        return;
+      }
+    } catch (e) {}
+    listo(null);
+  }
+
+  function mandar() {
+    if (enviado || enviando) return;
+    if (!LOTE || !HOJA || !tarjetas.length) { aviso('Abre esta ficha desde el botón del bot en Telegram.', 'mal'); return; }
+    tocado = true;
+    var c = cuenta();
+    if (c.falta.length) {
+      dibujar();
+      var b0 = $('pr-' + c.falta[0]);
+      if (b0 && b0.scrollIntoView) b0.scrollIntoView({behavior: 'smooth', block: 'center'});
+      aviso('Falta el precio de la ' + c.falta.map(function (i) { return i + 1; }).join(', ') +
+            '. Ponle precio o márcala «🔧 Arreglar».', 'mal');
+      haptic('error');
+      return;
+    }
+    quitarAviso();
+    var datos = {t: 'precios', v: 2, l: LOTE, h: HOJA, c: tarjetas.map(function (t) {
+      var o = {f: t.f, a: t.a ? 1 : 0};
+      if (t.a) { if (t.x.trim()) o.x = t.x.trim().slice(0, MAX_NOTA); } else o.q = num(t.q);
+      return o;
+    })};
+    var json = JSON.stringify(datos);
+    if (json.length > 4000) { aviso('Las notas de «Arreglar» son muy largas: acórtalas un poco.', 'mal'); return; }
+    var pregunta = '¿Mandar ' + c.con + ' prenda' + (c.con === 1 ? '' : 's') + ' a la trabajadora' +
+      (c.arr ? ' y apartar ' + c.arr + ' para arreglar' : '') + '? Después ya no se puede cambiar.';
+    function seguir(si) {
+      if (!si || enviado || enviando) return;
+      enviando = true;
+      bloquear('✅ Ficha mandada. En unos minutos el bot te confirma y le llegan a la trabajadora.');
+      guardar(JSON.stringify(tarjetas), function () {
+        if (tg && tg.sendData) tg.sendData(json); else alert('Abre esta ficha desde Telegram.');
+      });
+    }
+    try {
+      if (tg && tg.showConfirm && tg.isVersionAtLeast && tg.isVersionAtLeast('6.2')) { tg.showConfirm(pregunta, seguir); return; }
+    } catch (e) {}
+    seguir(window.confirm(pregunta));
+  }
+
+  if (tg) {
+    tg.ready(); tg.expand();
+    tg.MainButton.onClick(mandar);
+  } else {
+    $('enviar').onclick = mandar;
+  }
+  revisar(function (v) {
+    if (v) {
+      try { var guardadas = JSON.parse(v); if (Array.isArray(guardadas) && guardadas.length) tarjetas = guardadas; } catch (e) {}
+      bloquear('✅ Esta ficha ya la mandaste. Quedó guardada y ya no se puede cambiar.');
+      return;
+    }
+    dibujar();
+    if (tg) tg.MainButton.show(); else $('enviar').style.display = 'block';
+  });
+})();
+</script>
+</body>
+</html>
