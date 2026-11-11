@@ -36,6 +36,9 @@
   .otro { margin-top: 8px; display: none; }
   .otro.on { display: block; }
   .err { color: var(--err); font-size: 13px; min-height: 16px; margin-top: 4px; }
+  .fijo { display: none; background: var(--sec); border-radius: 10px; padding: 11px 12px; font-size: 18px; font-weight: 700; }
+  .fijo.on { display: block; }
+  .fijo small { display: block; color: var(--hint); font-size: 12px; font-weight: 400; margin-top: 2px; }
   .resumen { background: var(--sec); border-radius: 12px; padding: 12px; font-size: 14px; white-space: pre-line; }
   .fotos { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px 14px; padding: 0 16px 4px;
     scroll-snap-type: x mandatory; }
@@ -100,6 +103,7 @@
 
   <section>
     <label class="t">Precio (Q)</label>
+    <div class="fijo" id="precio-fijo"></div>
     <div class="chips" id="precio"></div>
     <input type="number" class="otro" id="precio-otro" inputmode="numeric" min="1" max="20000" placeholder="Escribe el precio">
     <div class="err" id="e-precio"></div>
@@ -121,6 +125,9 @@
   // (8-nov) vistas previas: copias chicas de las fotos editadas en el repo público de medios (se borran a los 7 días)
   var VISTA = (q.get('v') || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40);
   var BASE_VISTA = 'https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/vistas/';
+  // (11-nov) precio puesto por Endy al aprobar la hoja: se muestra fijo y no se puede cambiar
+  var PRECIO_FIJO = parseInt(q.get('p') || '0', 10) || 0;
+  if (!(PRECIO_FIJO >= 1 && PRECIO_FIJO <= 20000)) PRECIO_FIJO = 0;
   var FOTOS = (q.get('f') || '').split(',').filter(function (x) { return /^[A-Za-z0-9_-]{20,250}$/.test(x); }).slice(0, 6);
 
   var MARCAS = [['outerwear', 'Outer'], ['alpha', 'Alpha'], ['ambas', 'Ambas']];
@@ -186,7 +193,14 @@
     $('med-op').textContent = c.med ? '(ancho × largo)' : '(opcional)';
   });
   chips($('cantidad'), CANTIDADES, 'cantidad', true);
-  chips($('precio'), PRECIOS, 'precio', true);
+  if (PRECIO_FIJO) {
+    v.precio = PRECIO_FIJO;
+    $('precio-fijo').innerHTML = 'Q' + PRECIO_FIJO + '<small>Lo puso Endy. No se cambia.</small>';
+    $('precio-fijo').classList.add('on');
+    $('precio').style.display = 'none';
+  } else {
+    chips($('precio'), PRECIOS, 'precio', true);
+  }
   (function () {
     var cont = $('fotos'), grande = $('grande');
     if (!VISTA || !NFOTOS) { cont.style.display = 'none'; return; }
@@ -224,7 +238,7 @@
     } else if (c && c.med) e.medidas = 'Pon ancho y largo en cm';
     d.cantidad = v.cantidad === OTRO ? parseInt($('cantidad-otro').value, 10) : v.cantidad;
     if (!(d.cantidad >= 1 && d.cantidad <= 500)) e.cantidad = 'Cantidad entre 1 y 500';
-    d.precio = v.precio === OTRO ? Math.round(num($('precio-otro').value)) : v.precio;
+    d.precio = PRECIO_FIJO || (v.precio === OTRO ? Math.round(num($('precio-otro').value)) : v.precio);
     if (!(d.precio >= 1 && d.precio <= 20000)) e.precio = 'Elige o escribe el precio';
     if (!PRENDA) e.nombre = 'Abre este formulario desde el botón del bot';
     return {d: d, e: e};
