@@ -74,6 +74,11 @@
   input:focus, textarea:focus { border-color: var(--acc); }
   input:disabled, textarea:disabled, button:disabled { opacity: .6; }
   .err { color: var(--err); font-size: 13px; margin-top: 4px; }
+  /* (12-nov tarde) cuenta fija arriba mientras bajas: el botón de Telegram se tapa con el teclado */
+  .cuenta { position: sticky; top: 0; z-index: 4; background: var(--bg); color: var(--hint); font-size: 14px; font-weight: 600;
+    padding: 8px 2px; margin: -4px 0 10px; border-bottom: 1px solid var(--sec); }
+  .cuenta:empty { display: none; }
+  .cuenta.completa { color: var(--ok); }
   .arr-tx { color: var(--arr); font-weight: 600; font-size: 15px; }
   /* foto grande con su propio «✕ Cerrar» (la X de arriba de Telegram cierra TODA la ficha) */
   #grande { position: fixed; inset: 0; background: rgba(0,0,0,.95); display: none; align-items: center;
@@ -99,6 +104,7 @@
     <input type="number" id="todas-q" inputmode="numeric" enterkeyhint="done" min="1" max="20000" placeholder="Q">
     <button type="button" id="todas-b">Poner</button>
   </div>
+  <div class="cuenta" id="cuenta"></div>
   <div id="lista"></div>
 </main>
 </div>
@@ -115,6 +121,10 @@
   var HOJA = (q.get('h') || '').replace(/[^0-9]/g, '').slice(0, 6);
   var BASE_VISTA = 'https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/vistas/';
   var MAX_FOTOS = 4, MAX_NOTA = 120;
+  // (12-nov tarde) Telegram NO acepta más de 64 letras en el botón de abajo (MainButton.setText lanza un error).
+  // «Aprobar y mandar (11/17 con precio · 1 a arreglar · 10 fotos fuera)» tiene 67: desde el primer «Arreglar» el botón
+  // se quedaba congelado («11 de 18»), el borrador dejaba de guardarse y al tocar «Aprobar y mandar» no pasaba nada.
+  var MAX_BOTON = 60;
   // p = pid.fotos.vista[.cerca],…  → cada foto es 'pid:k' (k = 1…n) con su vista chica vistas/<vista>/<k>.jpg
   // (12-nov) cerca = números de las fotos DE CERCA (p. ej. '24'): Endy solo usa adelante y atrás → llegan quitadas
   var PRENDAS = (q.get('p') || '').split(',').map(function (x) {
@@ -191,19 +201,31 @@
   function guardarBorrador() { clearTimeout(tGuardar); tGuardar = setTimeout(guardarBorradorYa, 250); }
   window.addEventListener('pagehide', guardarBorradorYa);
   document.addEventListener('visibilitychange', function () { if (document.hidden) guardarBorradorYa(); });
-  function leerBorrador(listo) {
-    var local = null;
-    try { local = localStorage.getItem(CLAVE_B); } catch (e) {}
-    if (local) { listo(local); return; }
+  function clavesBorrador() {             // (12-nov) esta ficha y, si se volvió a mandar, las anteriores del mismo lote
+    var ks = [CLAVE_B], h = parseInt(HOJA, 10) || 0;
+    for (var k = h - 1; k >= Math.max(1, h - 3); k--) ks.push('borrador_' + LOTE + '_' + k);
+    return ks;
+  }
+  function leerBorrador(listo) {          // → borradores (texto), el de esta ficha primero: lo llenado no se pierde
+    var ks = clavesBorrador(), locales = [];
+    ks.forEach(function (k) { try { var v = localStorage.getItem(k); if (v) locales.push(v); } catch (e) {} });
+    if (locales.length) { listo(locales); return; }
     try {
       if (tg && tg.CloudStorage && ver('6.9')) {
         var hecho = false;
-        tg.CloudStorage.getItem(CLAVE_B, function (err, v) { if (!hecho) { hecho = true; listo(err ? null : v); } });
-        setTimeout(function () { if (!hecho) { hecho = true; listo(null); } }, 1500);
+        var fin = function (vals) { if (!hecho) { hecho = true; listo(vals); } };
+        if (tg.CloudStorage.getItems) {
+          tg.CloudStorage.getItems(ks, function (err, vals) {
+            fin(err || !vals ? [] : ks.map(function (k) { return vals[k]; }).filter(function (v) { return !!v; }));
+          });
+        } else {
+          tg.CloudStorage.getItem(CLAVE_B, function (err, v) { fin(!err && v ? [v] : []); });
+        }
+        setTimeout(function () { fin([]); }, 1500);
         return;
       }
     } catch (e) {}
-    listo(null);
+    listo([]);
   }
   function borradorValido(arr) {        // mismas fotos que la ficha, sin repetir: si no, se ignora
     if (!Array.isArray(arr) || !arr.length) return false;
@@ -281,7 +303,7 @@
         t.q = inp.value;
         cab.innerHTML = cabecera(t, i);
         if (okQ(num(t.q))) { box.classList.remove('falta'); var e = box.querySelector('.err'); if (e) e.remove(); }
-        actualizar(); guardarBorrador();
+        guardarBorrador(); actualizar();
       });
       box.appendChild(pr);
       if (falta) { var e = document.createElement('div'); e.className = 'err'; e.textContent = 'Falta el precio'; box.appendChild(e); }
@@ -317,7 +339,7 @@
     app.scrollTop = y;
     actualizar();
   }
-  function cambio(i) { pintar(i); actualizar(); guardarBorrador(); }
+  function cambio(i) { pintar(i); guardarBorrador(); actualizar(); }
   function boton(cont, txt, on, fn) {
     var b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
     if (on) b.className = 'on';
@@ -356,20 +378,41 @@
     });
     return {con: con, arr: arr, falta: falta, vac: vac, fq: fq};
   }
-  function texto() {
-    var c = cuenta();
-    return 'Aprobar y mandar (' + c.con + '/' + (tarjetas.length - c.arr - c.vac) + ' con precio' + (c.arr ? ' · ' + c.arr + ' a arreglar' : '') +
-      (c.fq ? ' · ' + c.fq + ' foto' + (c.fq === 1 ? '' : 's') + ' fuera' : '') + ')';
+  function texto() {                      // SIEMPRE ≤ MAX_BOTON letras (las fotos quitadas se ven en cada prenda)
+    var c = cuenta(), total = tarjetas.length - c.arr - c.vac;
+    var opciones = [
+      'Aprobar y mandar (' + c.con + '/' + total + ' con precio' + (c.arr ? ' · ' + c.arr + ' a arreglar' : '') + ')',
+      'Mandar (' + c.con + '/' + total + ' con precio' + (c.arr ? ' · ' + c.arr + ' a arreglar' : '') + ')',
+      'Mandar (' + c.con + '/' + total + (c.arr ? ' · ' + c.arr + ' arreglar' : '') + ')'
+    ];
+    for (var k = 0; k < opciones.length; k++) if (opciones[k].length <= MAX_BOTON) return opciones[k];
+    return opciones[opciones.length - 1].slice(0, MAX_BOTON);
+  }
+  function ponerBoton(txt) {              // si Telegram rechaza el texto, el resto de la ficha sigue funcionando
+    try {
+      if (tg && tg.MainButton) tg.MainButton.setText(txt); else $('enviar').textContent = txt;
+    } catch (e) {
+      try { tg.MainButton.setText('Aprobar y mandar'); } catch (e2) {}
+    }
+  }
+  function cuentaTexto(c) {               // la cuenta también dentro de la ficha (el botón se tapa con el teclado)
+    var total = tarjetas.length - c.arr - c.vac;
+    return 'Llevas ' + c.con + ' de ' + total + ' con precio' + (c.arr ? ' · ' + c.arr + ' para arreglar' : '') +
+      (c.fq ? ' · ' + c.fq + ' foto' + (c.fq === 1 ? '' : 's') + ' quitada' + (c.fq === 1 ? '' : 's') : '') + '.';
   }
   function actualizar() {
     if (enviado) return;
-    if (tg && tg.MainButton) tg.MainButton.setText(texto()); else $('enviar').textContent = texto();
-    $('sub').textContent = tarjetas.length + ' prenda' + (tarjetas.length === 1 ? '' : 's') + '. Revisa las fotos, pon el precio ' +
-      'al público (o «🔧 Arreglar»), quita las fotos que estén de más (🗑), separa o junta si hace falta y toca «Aprobar y mandar». ' +
-      (Object.keys(CERCA).length ? 'Las fotos de cerca ya vienen quitadas («↩️ Recuperar» si quieres una). ' : '') +
-      'Lo que llenas se guarda solo.';
+    var c = cuenta();
+    ponerBoton(texto());
+    try {
+      $('sub').textContent = tarjetas.length + ' prenda' + (tarjetas.length === 1 ? '' : 's') + '. Revisa las fotos, pon el precio ' +
+        'al público (o «🔧 Arreglar»), quita las fotos que estén de más (🗑), separa o junta si hace falta y toca «Aprobar y mandar». ' +
+        (Object.keys(CERCA).length ? 'Las fotos de cerca ya vienen quitadas («↩️ Recuperar» si quieres una). ' : '') +
+        'Lo que llenas se guarda solo.';
+      $('cuenta').textContent = cuentaTexto(c);
+      $('cuenta').className = 'cuenta' + (c.falta.length ? '' : ' completa');
+    } catch (e) {}
     if (tocado) {                         // después de intentar mandar: el aviso se va actualizando
-      var c = cuenta();
       if (c.falta.length) aviso('Falta el precio de la ' + c.falta.map(function (i) { return i + 1; }).join(', ') +
                                 '. Ponle precio o márcala «🔧 Arreglar».', 'mal');
       else quitarAviso();
@@ -380,6 +423,7 @@
   function bloquear(txt) {
     enviado = true;
     $('todas').style.display = 'none';
+    $('cuenta').style.display = 'none';
     var y = app.scrollTop, lista = $('lista'); lista.innerHTML = '';
     tarjetas.forEach(function (t, i) { lista.appendChild(crearTarjeta(t, i)); });
     app.scrollTop = y;
@@ -474,9 +518,11 @@
       bloquear('✅ Esta ficha ya la mandaste. Quedó guardada y ya no se puede cambiar.');
       return;
     }
-    leerBorrador(function (b) {
+    leerBorrador(function (lista) {
       var recuperado = false;
-      if (b) { try { var arr = JSON.parse(b); if (borradorValido(arr)) { tarjetas = arr; recuperado = firma(arr) !== FIRMA_INICIAL; } } catch (e) {} }
+      for (var j = 0; j < lista.length; j++) {     // el primero que tenga las mismas fotos que esta ficha
+        try { var arr = JSON.parse(lista[j]); if (borradorValido(arr)) { tarjetas = arr; recuperado = firma(arr) !== FIRMA_INICIAL; break; } } catch (e) {}
+      }
       dibujar();
       if (recuperado) aviso('Recuperé lo que ya habías llenado. Sigue donde te quedaste.', 'info');
       if (tg) tg.MainButton.show(); else $('enviar').style.display = 'block';
