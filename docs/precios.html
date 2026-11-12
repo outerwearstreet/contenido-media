@@ -42,6 +42,19 @@
   .fotos img { height: 300px; width: auto; max-width: 82%; border-radius: 10px; background: #fff; object-fit: contain;
     border: 1px solid var(--sec); flex: 0 0 auto; scroll-snap-align: start; }
   .fotos .sin { color: var(--hint); font-size: 13px; padding: 6px 0; }
+  .ft { position: relative; flex: 0 0 auto; scroll-snap-align: start; max-width: 82%; }
+  .ft img { max-width: 78vw; display: block; }
+  .ft .qt { position: absolute; top: 6px; right: 6px; border: 0; border-radius: 16px; padding: 6px 9px; font-size: 13px;
+    background: rgba(0,0,0,.62); color: #fff; }
+  .ft.fuera img { opacity: .22; }
+  .ft.fuera .qt { background: var(--ok); }
+  .ft .marca { position: absolute; left: 0; right: 0; top: 45%; text-align: center; font-weight: 700; color: var(--err);
+    font-size: 15px; pointer-events: none; }
+  .prenda.quitada { opacity: .75; border-style: dashed; }
+  .q-tx { color: var(--err); font-weight: 600; font-size: 15px; }
+  .precio .listo { border: 0; border-radius: 10px; padding: 11px 12px; background: var(--acc); color: var(--acc-tx);
+    font-size: 15px; flex: 0 0 auto; display: none; }
+  .precio.foco .listo { display: block; }
   .precio { display: flex; align-items: center; gap: 8px; }
   .precio b { font-size: 18px; }
   .acciones { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
@@ -95,7 +108,7 @@
   var tarjetas = PRENDAS.map(function (p) {
     var f = [];
     for (var k = 1; k <= p.n; k++) { var r = p.pid + ':' + k; f.push(r); FOTO[r] = p.vista ? BASE_VISTA + p.vista + '/' + k + '.jpg' : ''; }
-    return {f: f, q: '', a: false, x: ''};
+    return {f: f, d: [], q: '', a: false, x: ''};
   });
   var CLAVE = 'ficha_' + LOTE + '_' + HOJA;     // una sola vez por ficha (Telegram CloudStorage + el teléfono)
   var enviado = false, enviando = false, tocado = false;
@@ -106,6 +119,13 @@
   function num(x) { var n = parseFloat(String(x).replace(',', '.')); return isFinite(n) ? Math.round(n) : NaN; }
   function haptic(t) { try { if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred(t); } catch (e) {} }
   function okQ(v) { return v >= 1 && v <= 20000; }
+  function quedan(t) { var d = t.d || []; return t.f.filter(function (r) { return d.indexOf(r) < 0; }); }
+  function vacia(t) { return !quedan(t).length; }        // le quitaron todas las fotos: no se manda
+  // (11-nov) quitar el teclado: tocar fuera del campo, «Listo» o Enter
+  function soltar() { var a = document.activeElement; if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA')) a.blur(); }
+  document.addEventListener('touchstart', function (e) {
+    var el = e.target; if (el && el.closest && !el.closest('input, textarea, .listo')) soltar();
+  }, {passive: true});
   var grande = $('grande');
   grande.onclick = function () { grande.style.display = 'none'; };
 
@@ -115,27 +135,53 @@
     lista.innerHTML = '';
     tarjetas.forEach(function (t, i) {
       var box = document.createElement('div');
-      var falta = tocado && !t.a && !okQ(num(t.q));
-      box.className = 'prenda' + (t.a ? ' arr' : '') + (falta ? ' falta' : '');
+      t.d = t.d || [];
+      var vac = vacia(t), quedanN = quedan(t).length;
+      var falta = tocado && !vac && !t.a && !okQ(num(t.q));
+      box.className = 'prenda' + (vac ? ' quitada' : t.a ? ' arr' : '') + (falta ? ' falta' : '');
       box.id = 'pr-' + i;
       var cab = document.createElement('div'); cab.className = 'cab';
-      cab.innerHTML = '<span class="num">' + (i + 1) + '</span><span class="n">' + t.f.length + ' foto' + (t.f.length === 1 ? '' : 's') + '</span>';
+      cab.innerHTML = '<span class="num">' + (i + 1) + '</span><span class="n">' + quedanN + ' foto' + (quedanN === 1 ? '' : 's') +
+        (t.d.length ? ' · ' + t.d.length + ' quitada' + (t.d.length === 1 ? '' : 's') : '') + '</span>';
       box.appendChild(cab);
       var fotos = document.createElement('div'); fotos.className = 'fotos';
       t.f.forEach(function (r) {
         if (!FOTO[r]) return;
+        var fuera = t.d.indexOf(r) >= 0;
+        var ft = document.createElement('div'); ft.className = 'ft' + (fuera ? ' fuera' : '');
         var im = document.createElement('img');
         im.alt = 'Prenda ' + (i + 1); im.loading = 'lazy'; im.src = FOTO[r];
-        im.onerror = function () { this.remove(); };
+        im.onerror = function () { ft.remove(); };
         im.onclick = function () { grande.querySelector('img').src = this.src; grande.style.display = 'flex'; };
-        fotos.appendChild(im);
+        ft.appendChild(im);
+        if (fuera) { var mk = document.createElement('div'); mk.className = 'marca'; mk.textContent = 'QUITADA'; ft.appendChild(mk); }
+        if (!enviado) {                                   // 🗑 la foto está de más · ↩️ recuperarla
+          var qb = document.createElement('button'); qb.type = 'button'; qb.className = 'qt';
+          qb.textContent = fuera ? '↩️ Recuperar' : '🗑 Quitar';
+          qb.onclick = function (e) {
+            e.stopPropagation();
+            if (fuera) t.d = t.d.filter(function (x) { return x !== r; }); else t.d.push(r);
+            try { tg && tg.HapticFeedback && tg.HapticFeedback.selectionChanged(); } catch (er) {}
+            dibujar();
+          };
+          ft.appendChild(qb);
+        }
+        fotos.appendChild(ft);
       });
       if (!fotos.children.length) fotos.innerHTML = '<div class="sin">Sin foto en la ficha (no se pudo subir).</div>';
       box.appendChild(fotos);
-      if (!t.a) {
+      if (vac) {
+        var qx = document.createElement('div'); qx.className = 'q-tx'; qx.textContent = '🗑 Quitaste todas sus fotos: esta no se manda';
+        box.appendChild(qx);
+      } else if (!t.a) {
         var pr = document.createElement('div'); pr.className = 'precio';
-        pr.innerHTML = '<b>Q</b><input type="number" inputmode="numeric" min="1" max="20000" placeholder="Precio al público">';
+        pr.innerHTML = '<b>Q</b><input type="number" inputmode="numeric" enterkeyhint="done" min="1" max="20000" placeholder="Precio al público">' +
+          '<button type="button" class="listo">Listo</button>';
         var inp = pr.querySelector('input'); inp.value = t.q; inp.disabled = enviado;
+        inp.addEventListener('focus', function () { pr.classList.add('foco'); });
+        inp.addEventListener('blur', function () { setTimeout(function () { pr.classList.remove('foco'); }, 150); });
+        inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); inp.blur(); } });
+        pr.querySelector('.listo').addEventListener('click', function () { inp.blur(); });
         inp.addEventListener('input', function () { t.q = inp.value; box.classList.remove('falta');
           var e = box.querySelector('.err'); if (e) e.remove(); actualizar(); });
         box.appendChild(pr);
@@ -150,9 +196,9 @@
       }
       if (!enviado) {
         var ac = document.createElement('div'); ac.className = 'acciones';
-        boton(ac, t.a ? '↩️ Ya no arreglar' : '🔧 Arreglar', t.a, function () { t.a = !t.a; dibujar(); });
-        if (t.f.length > 1) boton(ac, '✂️ Separar (' + t.f.length + ' prendas)', false, function () { separar(i); });
-        if (i > 0 && tarjetas[i - 1].f.length + t.f.length <= MAX_FOTOS)
+        if (!vac) boton(ac, t.a ? '↩️ Ya no arreglar' : '🔧 Arreglar', t.a, function () { t.a = !t.a; dibujar(); });
+        if (quedanN > 1) boton(ac, '✂️ Separar (' + quedanN + ' prendas)', false, function () { separar(i); });
+        if (i > 0 && !vac && !vacia(tarjetas[i - 1]) && quedan(tarjetas[i - 1]).length + quedanN <= MAX_FOTOS)
           boton(ac, '🔗 Juntar con la ' + i, false, function () { juntar(i); });
         box.appendChild(ac);
       }
@@ -168,13 +214,15 @@
   }
   function separar(i) {
     var t = tarjetas[i];
-    var partes = t.f.map(function (r) { return {f: [r], q: t.q, a: t.a, x: t.x}; });
+    var d = t.d || [];
+    var partes = t.f.map(function (r) { return {f: [r], d: d.indexOf(r) >= 0 ? [r] : [], q: t.q, a: t.a, x: t.x}; });
     tarjetas.splice.apply(tarjetas, [i, 1].concat(partes));
     dibujar();
   }
   function juntar(i) {
     var a = tarjetas[i - 1], b = tarjetas[i];
-    if (a.f.length + b.f.length > MAX_FOTOS) return;
+    if (quedan(a).length + quedan(b).length > MAX_FOTOS) return;
+    a.d = (a.d || []).concat(b.d || []);
     a.f = a.f.concat(b.f); if (!a.q) a.q = b.q; a.a = a.a && b.a; a.x = a.x || b.x;
     tarjetas.splice(i, 1);
     dibujar();
@@ -183,25 +231,30 @@
   $('todas-b').onclick = function () {
     var v = num($('todas-q').value);
     if (!okQ(v)) { $('todas-q').focus(); return; }
-    tarjetas.forEach(function (t) { if (!t.a && !t.q) t.q = String(v); });
+    tarjetas.forEach(function (t) { if (!t.a && !t.q && !vacia(t)) t.q = String(v); });
     $('todas-q').value = '';
     dibujar();
   };
 
   function cuenta() {
-    var con = 0, arr = 0, falta = [];
-    tarjetas.forEach(function (t, i) { if (t.a) arr++; else if (okQ(num(t.q))) con++; else falta.push(i); });
-    return {con: con, arr: arr, falta: falta};
+    var con = 0, arr = 0, falta = [], vac = 0, fq = 0;
+    tarjetas.forEach(function (t, i) {
+      fq += (t.d || []).length;
+      if (vacia(t)) vac++; else if (t.a) arr++; else if (okQ(num(t.q))) con++; else falta.push(i);
+    });
+    return {con: con, arr: arr, falta: falta, vac: vac, fq: fq};
   }
   function texto() {
     var c = cuenta();
-    return 'Aprobar y mandar (' + c.con + '/' + (tarjetas.length - c.arr) + ' con precio' + (c.arr ? ' · ' + c.arr + ' a arreglar' : '') + ')';
+    return 'Aprobar y mandar (' + c.con + '/' + (tarjetas.length - c.arr - c.vac) + ' con precio' + (c.arr ? ' · ' + c.arr + ' a arreglar' : '') +
+      (c.fq ? ' · ' + c.fq + ' foto' + (c.fq === 1 ? '' : 's') + ' fuera' : '') + ')';
   }
   function actualizar() {
     if (enviado) return;
     if (tg && tg.MainButton) tg.MainButton.setText(texto()); else $('enviar').textContent = texto();
     $('sub').textContent = tarjetas.length + ' prenda' + (tarjetas.length === 1 ? '' : 's') + '. Revisa las fotos, pon el precio ' +
-      'al público (o «🔧 Arreglar»), separa o junta si hace falta y toca «Aprobar y mandar». Se manda una sola vez.';
+      'al público (o «🔧 Arreglar»), quita las fotos que estén de más (🗑), separa o junta si hace falta y toca «Aprobar y mandar». ' +
+      'Se manda una sola vez.';
   }
 
   // ---------- una sola vez
@@ -255,16 +308,22 @@
       haptic('error');
       return;
     }
+    if (!tarjetas.some(function (t) { return !vacia(t); })) { aviso('Quitaste todas las fotos. Recupera al menos una prenda.', 'mal'); return; }
     quitarAviso();
-    var datos = {t: 'precios', v: 2, l: LOTE, h: HOJA, c: tarjetas.map(function (t) {
-      var o = {f: t.f, a: t.a ? 1 : 0};
+    soltar();
+    var quit = [];
+    tarjetas.forEach(function (t) { quit = quit.concat(t.d || []); });
+    var datos = {t: 'precios', v: 2, l: LOTE, h: HOJA, c: tarjetas.filter(function (t) { return !vacia(t); }).map(function (t) {
+      var o = {f: quedan(t), a: t.a ? 1 : 0};
       if (t.a) { if (t.x.trim()) o.x = t.x.trim().slice(0, MAX_NOTA); } else o.q = num(t.q);
       return o;
     })};
+    if (quit.length) datos.d = quit;
     var json = JSON.stringify(datos);
     if (json.length > 4000) { aviso('Las notas de «Arreglar» son muy largas: acórtalas un poco.', 'mal'); return; }
     var pregunta = '¿Mandar ' + c.con + ' prenda' + (c.con === 1 ? '' : 's') + ' a la trabajadora' +
-      (c.arr ? ' y apartar ' + c.arr + ' para arreglar' : '') + '? Después ya no se puede cambiar.';
+      (c.arr ? ', apartar ' + c.arr + ' para arreglar' : '') + (c.fq ? ' y quitar ' + c.fq + ' foto' + (c.fq === 1 ? '' : 's') : '') +
+      '? Después ya no se puede cambiar.';
     function seguir(si) {
       if (!si || enviado || enviando) return;
       enviando = true;
