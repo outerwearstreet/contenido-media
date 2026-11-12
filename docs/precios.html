@@ -133,6 +133,12 @@
     if (d.length === f.length) d = [];            // nunca deja una prenda sin fotos por esto
     return {f: f, d: d, q: '', a: false, x: ''};
   });
+  function firma(ts) {                            // (12-nov) lo que cuenta de la ficha: fotos, quitadas, precio, arreglar, nota
+    return JSON.stringify(ts.map(function (t) {
+      return [t.f.join(','), (t.d || []).slice().sort().join(','), String(t.q || '').trim(), !!t.a, String(t.x || '').trim()];
+    }));
+  }
+  var FIRMA_INICIAL = firma(tarjetas);            // si el borrador es igual a la ficha nueva, no se dice «Recuperé…»
   var CLAVE = 'ficha_' + LOTE + '_' + HOJA;       // ya mandada (una sola vez por ficha)
   var CLAVE_B = 'borrador_' + LOTE + '_' + HOJA;  // (12-nov) lo que va llenando: si se cierra, al abrir se recupera
   var enviado = false, enviando = false, tocado = false;
@@ -470,7 +476,7 @@
     }
     leerBorrador(function (b) {
       var recuperado = false;
-      if (b) { try { var arr = JSON.parse(b); if (borradorValido(arr)) { tarjetas = arr; recuperado = true; } } catch (e) {} }
+      if (b) { try { var arr = JSON.parse(b); if (borradorValido(arr)) { tarjetas = arr; recuperado = firma(arr) !== FIRMA_INICIAL; } } catch (e) {} }
       dibujar();
       if (recuperado) aviso('Recuperé lo que ya habías llenado. Sigue donde te quedaste.', 'info');
       if (tg) tg.MainButton.show(); else $('enviar').style.display = 'block';
