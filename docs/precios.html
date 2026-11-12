@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>Ficha de prendas</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
@@ -17,15 +17,19 @@
     --ok: #1e8e3e;
     --arr: #b06000;
   }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; background: var(--bg); color: var(--tx); overflow-x: hidden;
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  /* (12-nov) la página NO se desplaza: se desplaza #app. Así deslizar hacia arriba/abajo no cierra la ficha en Telegram */
+  html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); color: var(--tx);
     font: 16px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  main { padding: 14px 16px 110px; max-width: 560px; margin: 0 auto; }
+  #app { position: fixed; inset: 0; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain; }
+  main { padding: 14px 16px 120px; max-width: 560px; margin: 0 auto; }
   h1 { font-size: 19px; margin: 2px 0 2px; }
   .sub { color: var(--hint); font-size: 13px; margin-bottom: 12px; }
   .aviso { border-radius: 12px; padding: 12px; font-size: 15px; margin-bottom: 14px; display: none; }
   .aviso.on { display: block; }
   .aviso.ok { background: rgba(30, 142, 62, .12); color: var(--ok); font-weight: 600; }
+  .aviso.info { background: var(--sec); color: var(--tx); }
   .aviso.mal { background: rgba(217, 48, 37, .1); color: var(--err); }
   .todas { display: flex; gap: 8px; align-items: center; background: var(--sec); border-radius: 12px; padding: 10px;
     margin-bottom: 14px; }
@@ -35,189 +39,290 @@
   .prenda { border: 1px solid var(--sec); border-radius: 14px; padding: 10px; margin-bottom: 14px; }
   .prenda.falta { border-color: var(--err); }
   .prenda.arr { border-color: var(--arr); background: rgba(176, 96, 0, .06); }
+  .prenda.quitada { opacity: .75; border-style: dashed; }
   .cab { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .num { color: #dc1e1e; font-weight: 800; font-size: 24px; min-width: 30px; }
   .cab .n { color: var(--hint); font-size: 13px; flex: 1 1 auto; }
-  .fotos { display: flex; gap: 6px; overflow-x: auto; margin: 0 -10px 8px; padding: 0 10px 2px; scroll-snap-type: x mandatory; }
-  .fotos img { height: 300px; width: auto; max-width: 82%; border-radius: 10px; background: #fff; object-fit: contain;
-    border: 1px solid var(--sec); flex: 0 0 auto; scroll-snap-align: start; }
+  .cab .ok-q { color: var(--ok); font-weight: 700; font-size: 15px; }
+  .fotos { display: flex; gap: 6px; overflow-x: auto; margin: 0 -10px 8px; padding: 0 10px 2px; scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain; }
   .fotos .sin { color: var(--hint); font-size: 13px; padding: 6px 0; }
   .ft { position: relative; flex: 0 0 auto; scroll-snap-align: start; max-width: 82%; }
-  .ft img { max-width: 78vw; display: block; }
-  .ft .qt { position: absolute; top: 6px; right: 6px; border: 0; border-radius: 16px; padding: 6px 9px; font-size: 13px;
+  .ft img { height: 300px; width: auto; max-width: 78vw; display: block; border-radius: 10px; background: #fff;
+    object-fit: contain; border: 1px solid var(--sec); }
+  .ft .qt { position: absolute; top: 6px; right: 6px; border: 0; border-radius: 16px; padding: 7px 10px; font-size: 13px;
     background: rgba(0,0,0,.62); color: #fff; }
+  .ft .lupa { position: absolute; left: 6px; bottom: 6px; border-radius: 14px; padding: 4px 8px; font-size: 12px;
+    background: rgba(0,0,0,.5); color: #fff; pointer-events: none; }
   .ft.fuera img { opacity: .22; }
+  .ft .cerca { position: absolute; left: 6px; top: 6px; background: rgba(0,0,0,.6); color: #fff; font-size: 11px; padding: 2px 6px; border-radius: 6px; }
   .ft.fuera .qt { background: var(--ok); }
   .ft .marca { position: absolute; left: 0; right: 0; top: 45%; text-align: center; font-weight: 700; color: var(--err);
     font-size: 15px; pointer-events: none; }
-  .prenda.quitada { opacity: .75; border-style: dashed; }
   .q-tx { color: var(--err); font-weight: 600; font-size: 15px; }
-  .precio .listo { border: 0; border-radius: 10px; padding: 11px 12px; background: var(--acc); color: var(--acc-tx);
-    font-size: 15px; flex: 0 0 auto; display: none; }
-  .precio.foco .listo { display: block; }
   .precio { display: flex; align-items: center; gap: 8px; }
   .precio b { font-size: 18px; }
+  .precio .listo { border: 0; border-radius: 10px; padding: 11px 14px; background: var(--acc); color: var(--acc-tx);
+    font-size: 15px; flex: 0 0 auto; }
   .acciones { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-  .acciones button { border: 0; border-radius: 16px; padding: 8px 11px; background: var(--sec); color: var(--tx); font-size: 14px; }
+  .acciones button { border: 0; border-radius: 16px; padding: 9px 12px; background: var(--sec); color: var(--tx); font-size: 14px; }
   .acciones button.on { background: var(--arr); color: #fff; }
   input[type=number], textarea { width: 100%; padding: 11px 12px; border-radius: 10px; border: 1px solid transparent;
     background: var(--sec); color: var(--tx); font-size: 18px; outline: none; font-family: inherit; }
   .todas input[type=number] { width: 96px; flex: 0 0 auto; }
-  textarea { font-size: 15px; min-height: 64px; resize: vertical; margin-top: 8px; }
+  textarea { font-size: 16px; min-height: 64px; resize: vertical; margin-top: 8px; }
   input:focus, textarea:focus { border-color: var(--acc); }
   input:disabled, textarea:disabled, button:disabled { opacity: .6; }
   .err { color: var(--err); font-size: 13px; margin-top: 4px; }
   .arr-tx { color: var(--arr); font-weight: 600; font-size: 15px; }
-  #grande { position: fixed; inset: 0; background: rgba(0,0,0,.94); display: none; align-items: center;
-    justify-content: center; z-index: 9; }
+  /* foto grande con su propio «✕ Cerrar» (la X de arriba de Telegram cierra TODA la ficha) */
+  #grande { position: fixed; inset: 0; background: rgba(0,0,0,.95); display: none; align-items: center;
+    justify-content: center; z-index: 20; touch-action: pinch-zoom; }
+  #grande.on { display: flex; }
   #grande img { max-width: 100%; max-height: 100%; }
+  #grande .cerrar { position: fixed; top: calc(12px + env(safe-area-inset-top)); right: 12px; border: 0; border-radius: 22px;
+    padding: 12px 18px; font-size: 17px; font-weight: 700; background: #fff; color: #111; z-index: 21; }
+  #grande .pie { position: fixed; bottom: calc(16px + env(safe-area-inset-bottom)); left: 0; right: 0; text-align: center;
+    color: #ddd; font-size: 13px; }
   #enviar { position: fixed; left: 16px; right: 16px; bottom: 16px; padding: 14px; border: 0; border-radius: 12px;
-    background: var(--acc); color: var(--acc-tx); font-size: 16px; font-weight: 600; display: none; }
+    background: var(--acc); color: var(--acc-tx); font-size: 16px; font-weight: 600; display: none; z-index: 5; }
 </style>
 </head>
 <body>
+<div id="app">
 <main>
   <h1>Ficha de prendas</h1>
   <div class="sub" id="sub"></div>
   <div class="aviso" id="aviso"></div>
   <div class="todas" id="todas">
     <span>Mismo precio a las que están vacías</span>
-    <input type="number" id="todas-q" inputmode="numeric" min="1" max="20000" placeholder="Q">
+    <input type="number" id="todas-q" inputmode="numeric" enterkeyhint="done" min="1" max="20000" placeholder="Q">
     <button type="button" id="todas-b">Poner</button>
   </div>
   <div id="lista"></div>
-  <div id="grande"><img alt=""></div>
 </main>
+</div>
+<div id="grande"><button type="button" class="cerrar" id="cerrar-foto">✕ Cerrar</button><img alt="">
+  <div class="pie">Toca la foto o «✕ Cerrar» para volver a la ficha</div></div>
 <button id="enviar" type="button">Aprobar y mandar a la trabajadora</button>
 
 <script>
 (function () {
   var tg = window.Telegram && window.Telegram.WebApp;
+  function ver(v) { try { return !!(tg && tg.isVersionAtLeast && tg.isVersionAtLeast(v)); } catch (e) { return false; } }
   var q = new URLSearchParams(location.search);
   var LOTE = (q.get('l') || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40);
   var HOJA = (q.get('h') || '').replace(/[^0-9]/g, '').slice(0, 6);
   var BASE_VISTA = 'https://raw.githubusercontent.com/outerwearstreet/contenido-media/main/vistas/';
   var MAX_FOTOS = 4, MAX_NOTA = 120;
-  // p = pid.fotos.vista,…  → cada foto es 'pid:k' (k = 1…n) con su vista chica vistas/<vista>/<k>.jpg
+  // p = pid.fotos.vista[.cerca],…  → cada foto es 'pid:k' (k = 1…n) con su vista chica vistas/<vista>/<k>.jpg
+  // (12-nov) cerca = números de las fotos DE CERCA (p. ej. '24'): Endy solo usa adelante y atrás → llegan quitadas
   var PRENDAS = (q.get('p') || '').split(',').map(function (x) {
     var a = x.split('.');
     return {pid: (a[0] || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40), n: Math.min(parseInt(a[1] || '0', 10) || 0, MAX_FOTOS),
-            vista: (a[2] || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40)};
+            vista: (a[2] || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40), cerca: (a[3] || '').replace(/[^1-9]/g, '').slice(0, 9)};
   }).filter(function (x) { return x.pid && x.n; }).slice(0, 150);
   var FOTO = {};                                  // 'pid:k' → url de la vista ('' si no hay)
+  var CERCA = {};                                 // 'pid:k' → true si es foto de cerca
   var tarjetas = PRENDAS.map(function (p) {
-    var f = [];
-    for (var k = 1; k <= p.n; k++) { var r = p.pid + ':' + k; f.push(r); FOTO[r] = p.vista ? BASE_VISTA + p.vista + '/' + k + '.jpg' : ''; }
-    return {f: f, d: [], q: '', a: false, x: ''};
+    var f = [], d = [];
+    for (var k = 1; k <= p.n; k++) {
+      var r = p.pid + ':' + k; f.push(r); FOTO[r] = p.vista ? BASE_VISTA + p.vista + '/' + k + '.jpg' : '';
+      if (p.cerca.indexOf(String(k)) >= 0) { CERCA[r] = true; d.push(r); }
+    }
+    if (d.length === f.length) d = [];            // nunca deja una prenda sin fotos por esto
+    return {f: f, d: d, q: '', a: false, x: ''};
   });
-  var CLAVE = 'ficha_' + LOTE + '_' + HOJA;     // una sola vez por ficha (Telegram CloudStorage + el teléfono)
+  var CLAVE = 'ficha_' + LOTE + '_' + HOJA;       // ya mandada (una sola vez por ficha)
+  var CLAVE_B = 'borrador_' + LOTE + '_' + HOJA;  // (12-nov) lo que va llenando: si se cierra, al abrir se recupera
   var enviado = false, enviando = false, tocado = false;
 
   function $(id) { return document.getElementById(id); }
+  var app = $('app');
   function aviso(txt, tipo) { var a = $('aviso'); a.textContent = txt; a.className = 'aviso on ' + tipo; }
   function quitarAviso() { $('aviso').className = 'aviso'; }
   function num(x) { var n = parseFloat(String(x).replace(',', '.')); return isFinite(n) ? Math.round(n) : NaN; }
   function haptic(t) { try { if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred(t); } catch (e) {} }
+  function toque() { try { if (tg && tg.HapticFeedback) tg.HapticFeedback.selectionChanged(); } catch (e) {} }
   function okQ(v) { return v >= 1 && v <= 20000; }
   function quedan(t) { var d = t.d || []; return t.f.filter(function (r) { return d.indexOf(r) < 0; }); }
   function vacia(t) { return !quedan(t).length; }        // le quitaron todas las fotos: no se manda
-  // (11-nov) quitar el teclado: tocar fuera del campo, «Listo» o Enter
-  function soltar() { var a = document.activeElement; if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA')) a.blur(); }
-  document.addEventListener('touchstart', function (e) {
-    var el = e.target; if (el && el.closest && !el.closest('input, textarea, .listo')) soltar();
-  }, {passive: true});
-  var grande = $('grande');
-  grande.onclick = function () { grande.style.display = 'none'; };
 
-  // ---------- dibujar
-  function dibujar() {
-    var lista = $('lista');
-    lista.innerHTML = '';
-    tarjetas.forEach(function (t, i) {
-      var box = document.createElement('div');
-      t.d = t.d || [];
-      var vac = vacia(t), quedanN = quedan(t).length;
-      var falta = tocado && !vac && !t.a && !okQ(num(t.q));
-      box.className = 'prenda' + (vac ? ' quitada' : t.a ? ' arr' : '') + (falta ? ' falta' : '');
-      box.id = 'pr-' + i;
-      var cab = document.createElement('div'); cab.className = 'cab';
-      cab.innerHTML = '<span class="num">' + (i + 1) + '</span><span class="n">' + quedanN + ' foto' + (quedanN === 1 ? '' : 's') +
-        (t.d.length ? ' · ' + t.d.length + ' quitada' + (t.d.length === 1 ? '' : 's') : '') + '</span>';
-      box.appendChild(cab);
-      var fotos = document.createElement('div'); fotos.className = 'fotos';
-      t.f.forEach(function (r) {
-        if (!FOTO[r]) return;
-        var fuera = t.d.indexOf(r) >= 0;
-        var ft = document.createElement('div'); ft.className = 'ft' + (fuera ? ' fuera' : '');
-        var im = document.createElement('img');
-        im.alt = 'Prenda ' + (i + 1); im.loading = 'lazy'; im.src = FOTO[r];
-        im.onerror = function () { ft.remove(); };
-        im.onclick = function () { grande.querySelector('img').src = this.src; grande.style.display = 'flex'; };
-        ft.appendChild(im);
-        if (fuera) { var mk = document.createElement('div'); mk.className = 'marca'; mk.textContent = 'QUITADA'; ft.appendChild(mk); }
-        if (!enviado) {                                   // 🗑 la foto está de más · ↩️ recuperarla
-          var qb = document.createElement('button'); qb.type = 'button'; qb.className = 'qt';
-          qb.textContent = fuera ? '↩️ Recuperar' : '🗑 Quitar';
-          qb.onclick = function (e) {
-            e.stopPropagation();
-            if (fuera) t.d = t.d.filter(function (x) { return x !== r; }); else t.d.push(r);
-            try { tg && tg.HapticFeedback && tg.HapticFeedback.selectionChanged(); } catch (er) {}
-            dibujar();
-          };
-          ft.appendChild(qb);
-        }
-        fotos.appendChild(ft);
-      });
-      if (!fotos.children.length) fotos.innerHTML = '<div class="sin">Sin foto en la ficha (no se pudo subir).</div>';
-      box.appendChild(fotos);
-      if (vac) {
-        var qx = document.createElement('div'); qx.className = 'q-tx'; qx.textContent = '🗑 Quitaste todas sus fotos: esta no se manda';
-        box.appendChild(qx);
-      } else if (!t.a) {
-        var pr = document.createElement('div'); pr.className = 'precio';
-        pr.innerHTML = '<b>Q</b><input type="number" inputmode="numeric" enterkeyhint="done" min="1" max="20000" placeholder="Precio al público">' +
-          '<button type="button" class="listo">Listo</button>';
-        var inp = pr.querySelector('input'); inp.value = t.q; inp.disabled = enviado;
-        inp.addEventListener('focus', function () { pr.classList.add('foco'); });
-        inp.addEventListener('blur', function () { setTimeout(function () { pr.classList.remove('foco'); }, 150); });
-        inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); inp.blur(); } });
-        pr.querySelector('.listo').addEventListener('click', function () { inp.blur(); });
-        inp.addEventListener('input', function () { t.q = inp.value; box.classList.remove('falta');
-          var e = box.querySelector('.err'); if (e) e.remove(); actualizar(); });
-        box.appendChild(pr);
-        if (falta) { var e = document.createElement('div'); e.className = 'err'; e.textContent = 'Falta el precio'; box.appendChild(e); }
-      } else {
-        var at = document.createElement('div'); at.className = 'arr-tx'; at.textContent = '🔧 Se aparta para arreglarla (no le llega a la trabajadora)';
-        box.appendChild(at);
-        var ta = document.createElement('textarea'); ta.maxLength = MAX_NOTA; ta.disabled = enviado;
-        ta.placeholder = '¿Qué está mal? (opcional) Ej.: se comió la entrepierna';
-        ta.value = t.x; ta.addEventListener('input', function () { t.x = ta.value; });
-        box.appendChild(ta);
+  // ---------- teclado: se quita con «Listo», con Enter o con un TOQUE fuera (no al deslizar, ni al tocar un botón)
+  function soltar() { var a = document.activeElement; if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA')) a.blur(); }
+  var t0 = null;
+  document.addEventListener('touchstart', function (e) {
+    var p = e.touches && e.touches[0]; t0 = p ? {x: p.clientX, y: p.clientY} : null;
+  }, {passive: true});
+  document.addEventListener('touchend', function (e) {
+    var p = e.changedTouches && e.changedTouches[0];
+    if (!t0 || !p || Math.abs(p.clientX - t0.x) > 10 || Math.abs(p.clientY - t0.y) > 10) return;   // fue deslizar
+    var el = e.target;
+    if (el && el.closest && !el.closest('input, textarea, button')) soltar();
+  }, {passive: true});
+
+  // ---------- foto grande
+  var grande = $('grande'), grandeImg = grande.querySelector('img');
+  function abrirFoto(src) {
+    soltar(); grandeImg.src = src; grande.classList.add('on');
+    try { if (tg && tg.BackButton && ver('6.1')) tg.BackButton.show(); } catch (e) {}
+  }
+  function cerrarFoto() {
+    grande.classList.remove('on');
+    try { if (tg && tg.BackButton && ver('6.1')) tg.BackButton.hide(); } catch (e) {}
+  }
+  $('cerrar-foto').onclick = function (e) { e.stopPropagation(); cerrarFoto(); };
+  grande.onclick = cerrarFoto;
+
+  // ---------- borrador (se guarda solo, a cada cambio)
+  var tGuardar = null;
+  function guardarBorradorYa() {
+    if (enviado) return;
+    var v = JSON.stringify(tarjetas);
+    try { localStorage.setItem(CLAVE_B, v); } catch (e) {}
+    try { if (tg && tg.CloudStorage && ver('6.9') && v.length <= 4000) tg.CloudStorage.setItem(CLAVE_B, v); } catch (e) {}
+  }
+  function guardarBorrador() { clearTimeout(tGuardar); tGuardar = setTimeout(guardarBorradorYa, 250); }
+  window.addEventListener('pagehide', guardarBorradorYa);
+  document.addEventListener('visibilitychange', function () { if (document.hidden) guardarBorradorYa(); });
+  function leerBorrador(listo) {
+    var local = null;
+    try { local = localStorage.getItem(CLAVE_B); } catch (e) {}
+    if (local) { listo(local); return; }
+    try {
+      if (tg && tg.CloudStorage && ver('6.9')) {
+        var hecho = false;
+        tg.CloudStorage.getItem(CLAVE_B, function (err, v) { if (!hecho) { hecho = true; listo(err ? null : v); } });
+        setTimeout(function () { if (!hecho) { hecho = true; listo(null); } }, 1500);
+        return;
       }
-      if (!enviado) {
-        var ac = document.createElement('div'); ac.className = 'acciones';
-        if (!vac) boton(ac, t.a ? '↩️ Ya no arreglar' : '🔧 Arreglar', t.a, function () { t.a = !t.a; dibujar(); });
-        if (quedanN > 1) boton(ac, '✂️ Separar (' + quedanN + ' prendas)', false, function () { separar(i); });
-        if (i > 0 && !vac && !vacia(tarjetas[i - 1]) && quedan(tarjetas[i - 1]).length + quedanN <= MAX_FOTOS)
-          boton(ac, '🔗 Juntar con la ' + i, false, function () { juntar(i); });
-        box.appendChild(ac);
+    } catch (e) {}
+    listo(null);
+  }
+  function borradorValido(arr) {        // mismas fotos que la ficha, sin repetir: si no, se ignora
+    if (!Array.isArray(arr) || !arr.length) return false;
+    var vistas = {}, n = 0;
+    for (var i = 0; i < arr.length; i++) {
+      var t = arr[i];
+      if (!t || !Array.isArray(t.f) || !t.f.length) return false;
+      for (var j = 0; j < t.f.length; j++) { var r = t.f[j]; if (!(r in FOTO) || vistas[r]) return false; vistas[r] = 1; n++; }
+      t.d = Array.isArray(t.d) ? t.d.filter(function (r) { return t.f.indexOf(r) >= 0; }) : [];
+      t.q = typeof t.q === 'string' ? t.q.slice(0, 8) : ''; t.a = !!t.a; t.x = typeof t.x === 'string' ? t.x.slice(0, MAX_NOTA) : '';
+    }
+    return n === Object.keys(FOTO).length;
+  }
+  function borrarBorrador() {
+    try { localStorage.removeItem(CLAVE_B); } catch (e) {}
+    try { if (tg && tg.CloudStorage && ver('6.9')) tg.CloudStorage.removeItem(CLAVE_B); } catch (e) {}
+  }
+
+  // ---------- dibujar (cada prenda por separado: un botón solo vuelve a dibujar SU prenda)
+  function faltaDe(t) { return tocado && !vacia(t) && !t.a && !okQ(num(t.q)); }
+  function cabecera(t, i) {
+    var quedanN = quedan(t).length, d = (t.d || []).length;
+    var listo = !vacia(t) && !t.a && okQ(num(t.q));
+    return '<span class="num">' + (i + 1) + '</span><span class="n">' + quedanN + ' foto' + (quedanN === 1 ? '' : 's') +
+      (d ? ' · ' + d + ' quitada' + (d === 1 ? '' : 's') : '') + '</span>' +
+      (listo ? '<span class="ok-q">Q' + num(t.q) + ' ✓</span>' : t.a ? '<span class="arr-tx">🔧</span>' : '');
+  }
+  function crearTarjeta(t, i) {
+    t.d = t.d || [];
+    var box = document.createElement('div');
+    var vac = vacia(t), quedanN = quedan(t).length, falta = faltaDe(t);
+    box.className = 'prenda' + (vac ? ' quitada' : t.a ? ' arr' : '') + (falta ? ' falta' : '');
+    box.id = 'pr-' + i;
+    var cab = document.createElement('div'); cab.className = 'cab'; cab.innerHTML = cabecera(t, i);
+    box.appendChild(cab);
+    var fotos = document.createElement('div'); fotos.className = 'fotos';
+    t.f.forEach(function (r) {
+      if (!FOTO[r]) return;
+      var fuera = t.d.indexOf(r) >= 0;
+      var ft = document.createElement('div'); ft.className = 'ft' + (fuera ? ' fuera' : '');
+      var im = document.createElement('img');
+      im.alt = 'Prenda ' + (i + 1); im.loading = 'lazy'; im.src = FOTO[r];
+      im.onerror = function () { ft.remove(); };
+      im.onclick = function () { abrirFoto(this.src); };
+      ft.appendChild(im);
+      if (!fuera) { var lp = document.createElement('span'); lp.className = 'lupa'; lp.textContent = '🔍 ver grande'; ft.appendChild(lp); }
+      if (fuera) { var mk = document.createElement('div'); mk.className = 'marca'; mk.textContent = CERCA[r] ? 'DE CERCA · QUITADA' : 'QUITADA'; ft.appendChild(mk); }
+      else if (CERCA[r]) { var mc = document.createElement('span'); mc.className = 'cerca'; mc.textContent = 'de cerca'; ft.appendChild(mc); }
+      if (!enviado) {                                   // 🗑 la foto está de más · ↩️ recuperarla
+        var qb = document.createElement('button'); qb.type = 'button'; qb.className = 'qt';
+        qb.textContent = fuera ? '↩️ Recuperar' : '🗑 Quitar';
+        qb.onclick = function (e) {
+          e.stopPropagation();
+          if (fuera) t.d = t.d.filter(function (x) { return x !== r; }); else t.d.push(r);
+          toque(); cambio(i);
+        };
+        ft.appendChild(qb);
       }
-      lista.appendChild(box);
+      fotos.appendChild(ft);
     });
+    if (!fotos.children.length) fotos.innerHTML = '<div class="sin">Sin foto en la ficha (no se pudo subir).</div>';
+    box.appendChild(fotos);
+    if (vac) {
+      var qx = document.createElement('div'); qx.className = 'q-tx'; qx.textContent = '🗑 Quitaste todas sus fotos: esta no se manda';
+      box.appendChild(qx);
+    } else if (!t.a) {
+      var pr = document.createElement('div'); pr.className = 'precio';
+      pr.innerHTML = '<b>Q</b><input type="number" inputmode="numeric" enterkeyhint="done" min="1" max="20000" placeholder="Precio al público">' +
+        '<button type="button" class="listo">Listo</button>';
+      var inp = pr.querySelector('input'); inp.value = t.q; inp.disabled = enviado;
+      if (enviado) pr.querySelector('.listo').style.display = 'none';
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); inp.blur(); } });
+      pr.querySelector('.listo').addEventListener('click', function () { inp.blur(); });
+      inp.addEventListener('input', function () {
+        t.q = inp.value;
+        cab.innerHTML = cabecera(t, i);
+        if (okQ(num(t.q))) { box.classList.remove('falta'); var e = box.querySelector('.err'); if (e) e.remove(); }
+        actualizar(); guardarBorrador();
+      });
+      box.appendChild(pr);
+      if (falta) { var e = document.createElement('div'); e.className = 'err'; e.textContent = 'Falta el precio'; box.appendChild(e); }
+    } else {
+      var at = document.createElement('div'); at.className = 'arr-tx';
+      at.textContent = '🔧 Se aparta para arreglarla (no le llega a la trabajadora)' + (t.q ? ' · el precio Q' + t.q + ' queda guardado' : '');
+      box.appendChild(at);
+      var ta = document.createElement('textarea'); ta.maxLength = MAX_NOTA; ta.disabled = enviado;
+      ta.placeholder = '¿Qué está mal? (opcional) Ej.: se comió la entrepierna';
+      ta.value = t.x; ta.addEventListener('input', function () { t.x = ta.value; guardarBorrador(); });
+      box.appendChild(ta);
+    }
+    if (!enviado) {
+      var ac = document.createElement('div'); ac.className = 'acciones';
+      if (!vac) boton(ac, t.a ? '↩️ Ya no arreglar' : '🔧 Arreglar', t.a, function () { t.a = !t.a; cambio(i); });
+      if (quedanN > 1) boton(ac, '✂️ Separar (' + quedanN + ' prendas)', false, function () { separar(i); });
+      if (i > 0 && !vac && !vacia(tarjetas[i - 1]) && quedan(tarjetas[i - 1]).length + quedanN <= MAX_FOTOS)
+        boton(ac, '🔗 Juntar con la ' + i, false, function () { juntar(i); });
+      box.appendChild(ac);
+    }
+    return box;
+  }
+  function pintar(i) {                    // vuelve a dibujar solo la prenda i (y la siguiente: su «Juntar» depende de esta)
+    [i, i + 1].forEach(function (k) {
+      var viejo = $('pr-' + k);
+      if (viejo && tarjetas[k]) viejo.parentNode.replaceChild(crearTarjeta(tarjetas[k], k), viejo);
+    });
+  }
+  function dibujar() {                    // todo (al separar/juntar cambian los números): sin mover la pantalla
+    var y = app.scrollTop, lista = $('lista');
+    lista.innerHTML = '';
+    tarjetas.forEach(function (t, i) { lista.appendChild(crearTarjeta(t, i)); });
+    app.scrollTop = y;
     actualizar();
   }
+  function cambio(i) { pintar(i); actualizar(); guardarBorrador(); }
   function boton(cont, txt, on, fn) {
     var b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
     if (on) b.className = 'on';
-    b.onclick = function () { if (!enviado) { fn(); try { tg && tg.HapticFeedback && tg.HapticFeedback.selectionChanged(); } catch (e) {} } };
+    b.onclick = function () { if (!enviado) { fn(); toque(); } };
     cont.appendChild(b);
   }
   function separar(i) {
-    var t = tarjetas[i];
-    var d = t.d || [];
+    var t = tarjetas[i], d = t.d || [];
     var partes = t.f.map(function (r) { return {f: [r], d: d.indexOf(r) >= 0 ? [r] : [], q: t.q, a: t.a, x: t.x}; });
     tarjetas.splice.apply(tarjetas, [i, 1].concat(partes));
-    dibujar();
+    dibujar(); guardarBorrador();
   }
   function juntar(i) {
     var a = tarjetas[i - 1], b = tarjetas[i];
@@ -225,16 +330,17 @@
     a.d = (a.d || []).concat(b.d || []);
     a.f = a.f.concat(b.f); if (!a.q) a.q = b.q; a.a = a.a && b.a; a.x = a.x || b.x;
     tarjetas.splice(i, 1);
-    dibujar();
+    dibujar(); guardarBorrador();
   }
 
   $('todas-b').onclick = function () {
     var v = num($('todas-q').value);
     if (!okQ(v)) { $('todas-q').focus(); return; }
     tarjetas.forEach(function (t) { if (!t.a && !t.q && !vacia(t)) t.q = String(v); });
-    $('todas-q').value = '';
-    dibujar();
+    $('todas-q').value = ''; soltar();
+    dibujar(); guardarBorrador();
   };
+  $('todas-q').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); $('todas-b').click(); } });
 
   function cuenta() {
     var con = 0, arr = 0, falta = [], vac = 0, fq = 0;
@@ -254,24 +360,34 @@
     if (tg && tg.MainButton) tg.MainButton.setText(texto()); else $('enviar').textContent = texto();
     $('sub').textContent = tarjetas.length + ' prenda' + (tarjetas.length === 1 ? '' : 's') + '. Revisa las fotos, pon el precio ' +
       'al público (o «🔧 Arreglar»), quita las fotos que estén de más (🗑), separa o junta si hace falta y toca «Aprobar y mandar». ' +
-      'Se manda una sola vez.';
+      (Object.keys(CERCA).length ? 'Las fotos de cerca ya vienen quitadas («↩️ Recuperar» si quieres una). ' : '') +
+      'Lo que llenas se guarda solo.';
+    if (tocado) {                         // después de intentar mandar: el aviso se va actualizando
+      var c = cuenta();
+      if (c.falta.length) aviso('Falta el precio de la ' + c.falta.map(function (i) { return i + 1; }).join(', ') +
+                                '. Ponle precio o márcala «🔧 Arreglar».', 'mal');
+      else quitarAviso();
+    }
   }
 
   // ---------- una sola vez
   function bloquear(txt) {
     enviado = true;
     $('todas').style.display = 'none';
-    dibujar();
+    var y = app.scrollTop, lista = $('lista'); lista.innerHTML = '';
+    tarjetas.forEach(function (t, i) { lista.appendChild(crearTarjeta(t, i)); });
+    app.scrollTop = y;
     aviso(txt, 'ok');
     if (tg && tg.MainButton) { tg.MainButton.hideProgress(); tg.MainButton.hide(); }
     $('enviar').style.display = 'none';
+    try { if (tg && ver('6.2')) tg.disableClosingConfirmation(); } catch (e) {}
   }
   function guardar(valor, listo) {
     try { localStorage.setItem(CLAVE, valor); } catch (e) {}
     var hecho = false;
     function fin() { if (!hecho) { hecho = true; listo(); } }
     try {
-      if (tg && tg.CloudStorage && tg.isVersionAtLeast && tg.isVersionAtLeast('6.9')) {
+      if (tg && tg.CloudStorage && ver('6.9')) {
         tg.CloudStorage.setItem(CLAVE, valor.slice(0, 4000), fin);
         setTimeout(fin, 1500);
         return;
@@ -284,7 +400,7 @@
     try { local = localStorage.getItem(CLAVE); } catch (e) {}
     if (local) { listo(local); return; }
     try {
-      if (tg && tg.CloudStorage && tg.isVersionAtLeast && tg.isVersionAtLeast('6.9')) {
+      if (tg && tg.CloudStorage && ver('6.9')) {
         var hecho = false;
         tg.CloudStorage.getItem(CLAVE, function (err, v) { if (!hecho) { hecho = true; listo(err ? null : v); } });
         setTimeout(function () { if (!hecho) { hecho = true; listo(null); } }, 1500);
@@ -297,20 +413,18 @@
   function mandar() {
     if (enviado || enviando) return;
     if (!LOTE || !HOJA || !tarjetas.length) { aviso('Abre esta ficha desde el botón del bot en Telegram.', 'mal'); return; }
+    soltar();
     tocado = true;
     var c = cuenta();
     if (c.falta.length) {
       dibujar();
       var b0 = $('pr-' + c.falta[0]);
       if (b0 && b0.scrollIntoView) b0.scrollIntoView({behavior: 'smooth', block: 'center'});
-      aviso('Falta el precio de la ' + c.falta.map(function (i) { return i + 1; }).join(', ') +
-            '. Ponle precio o márcala «🔧 Arreglar».', 'mal');
       haptic('error');
       return;
     }
     if (!tarjetas.some(function (t) { return !vacia(t); })) { aviso('Quitaste todas las fotos. Recupera al menos una prenda.', 'mal'); return; }
     quitarAviso();
-    soltar();
     var quit = [];
     tarjetas.forEach(function (t) { quit = quit.concat(t.d || []); });
     var datos = {t: 'precios', v: 2, l: LOTE, h: HOJA, c: tarjetas.filter(function (t) { return !vacia(t); }).map(function (t) {
@@ -320,7 +434,7 @@
     })};
     if (quit.length) datos.d = quit;
     var json = JSON.stringify(datos);
-    if (json.length > 4000) { aviso('Las notas de «Arreglar» son muy largas: acórtalas un poco.', 'mal'); return; }
+    if (new Blob([json]).size > 4000) { aviso('Las notas de «Arreglar» son muy largas: acórtalas un poco.', 'mal'); return; }
     var pregunta = '¿Mandar ' + c.con + ' prenda' + (c.con === 1 ? '' : 's') + ' a la trabajadora' +
       (c.arr ? ', apartar ' + c.arr + ' para arreglar' : '') + (c.fq ? ' y quitar ' + c.fq + ' foto' + (c.fq === 1 ? '' : 's') : '') +
       '? Después ya no se puede cambiar.';
@@ -329,17 +443,21 @@
       enviando = true;
       bloquear('✅ Ficha mandada. En unos minutos el bot te confirma y le llegan a la trabajadora.');
       guardar(JSON.stringify(tarjetas), function () {
+        borrarBorrador();
         if (tg && tg.sendData) tg.sendData(json); else alert('Abre esta ficha desde Telegram.');
       });
     }
     try {
-      if (tg && tg.showConfirm && tg.isVersionAtLeast && tg.isVersionAtLeast('6.2')) { tg.showConfirm(pregunta, seguir); return; }
+      if (tg && tg.showConfirm && ver('6.2')) { tg.showConfirm(pregunta, seguir); return; }
     } catch (e) {}
     seguir(window.confirm(pregunta));
   }
 
   if (tg) {
     tg.ready(); tg.expand();
+    try { if (ver('7.7')) tg.disableVerticalSwipes(); } catch (e) {}        // deslizar no cierra la ficha
+    try { if (ver('6.2')) tg.enableClosingConfirmation(); } catch (e) {}    // la X de Telegram pregunta antes de cerrar
+    try { if (tg.BackButton && ver('6.1')) tg.BackButton.onClick(cerrarFoto); } catch (e) {}
     tg.MainButton.onClick(mandar);
   } else {
     $('enviar').onclick = mandar;
@@ -350,8 +468,13 @@
       bloquear('✅ Esta ficha ya la mandaste. Quedó guardada y ya no se puede cambiar.');
       return;
     }
-    dibujar();
-    if (tg) tg.MainButton.show(); else $('enviar').style.display = 'block';
+    leerBorrador(function (b) {
+      var recuperado = false;
+      if (b) { try { var arr = JSON.parse(b); if (borradorValido(arr)) { tarjetas = arr; recuperado = true; } } catch (e) {} }
+      dibujar();
+      if (recuperado) aviso('Recuperé lo que ya habías llenado. Sigue donde te quedaste.', 'info');
+      if (tg) tg.MainButton.show(); else $('enviar').style.display = 'block';
+    });
   });
 })();
 </script>
