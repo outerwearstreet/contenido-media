@@ -48,6 +48,9 @@
   #grande { position: fixed; inset: 0; background: rgba(0,0,0,.92); display: none; align-items: center;
     justify-content: center; z-index: 9; }
   #grande img { max-width: 100%; max-height: 100%; }
+  .ya { display: none; background: #e7f6ec; color: #135c2c; border-radius: 12px; padding: 12px; font-size: 15px; margin-bottom: 14px; }
+  .ya.on { display: block; }
+  .ya button { margin-top: 8px; border: 0; background: transparent; color: #135c2c; text-decoration: underline; font-size: 14px; padding: 0; }
   #enviar { position: fixed; left: 16px; right: 16px; bottom: 16px; padding: 14px; border: 0; border-radius: 12px;
     background: var(--acc); color: var(--acc-tx); font-size: 17px; font-weight: 600; display: none; }
 </style>
@@ -56,6 +59,8 @@
 <main>
   <h1>Cargar prenda</h1>
   <div class="sub" id="sub">Llena los datos y toca «Publicar». La prenda sale de una vez en el catálogo.</div>
+  <div class="ya" id="ya">✅ <b>Esta prenda ya la mandaste.</b> Ya no tienes que llenarla otra vez: en unos minutos sale de tus botones.<br>
+    <button type="button" id="ya-otra">Me salió un error y quiero mandarla otra vez</button></div>
   <div class="fotos" id="fotos"></div>
   <div id="grande"><img alt=""></div>
 
@@ -266,18 +271,51 @@
       return;
     }
     var json = JSON.stringify(r.d);
-    if (tg && tg.sendData) { tg.sendData(json); } else { alert('Abre este formulario desde Telegram.'); }
+    if (!(tg && tg.sendData)) { alert('Abre este formulario desde Telegram.'); return; }
+    marcarEnviada(function () { tg.sendData(json); });
+  }
+
+  // (15-nov) una prenda ya mandada no se vuelve a llenar: se guarda en el teléfono y en la nube de Telegram del bot
+  var CLAVE_YA = 'enviada_' + PRENDA;
+  function nube() { return tg && tg.CloudStorage && tg.isVersionAtLeast && tg.isVersionAtLeast('6.9'); }
+  function marcarEnviada(listo) {
+    var hecho = false, fin = function () { if (!hecho) { hecho = true; listo(); } };
+    var val = String(Date.now());
+    try { localStorage.setItem(CLAVE_YA, val); } catch (e) {}
+    try { if (PRENDA && nube()) { tg.CloudStorage.setItem(CLAVE_YA, val, fin); setTimeout(fin, 1200); return; } } catch (e) {}
+    fin();
+  }
+  function yaEnviada(listo) {
+    var local = null;
+    try { local = localStorage.getItem(CLAVE_YA); } catch (e) {}
+    if (local || !PRENDA) { listo(!!local); return; }
+    try {
+      if (nube()) {
+        var hecho = false;
+        tg.CloudStorage.getItem(CLAVE_YA, function (err, v) { if (!hecho) { hecho = true; listo(!err && !!v); } });
+        setTimeout(function () { if (!hecho) { hecho = true; listo(false); } }, 1500);
+        return;
+      }
+    } catch (e) {}
+    listo(false);
+  }
+  function mostrarBoton(si) {
+    if (tg) { if (si) tg.MainButton.show(); else tg.MainButton.hide(); }
+    else $('enviar').style.display = si ? 'block' : 'none';
   }
 
   if (tg) {
     tg.ready(); tg.expand();
     tg.MainButton.setText('Publicar');
     tg.MainButton.onClick(enviar);
-    tg.MainButton.show();
   } else {
-    $('enviar').style.display = 'block';
     $('enviar').onclick = enviar;
   }
+  yaEnviada(function (ya) {
+    $('ya').classList.toggle('on', ya);
+    mostrarBoton(!ya);
+  });
+  $('ya-otra').onclick = function () { $('ya').classList.remove('on'); mostrarBoton(true); };
   actualizar();
 })();
 </script>
