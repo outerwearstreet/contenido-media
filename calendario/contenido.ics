@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT1H
 X-PUBLISHED-TTL:PT1H
 BEGIN:VEVENT
 UID:a0aa1734953881e3f01cdf52@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261115T183000Z
 DTEND:20261115T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -28,7 +28,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:398bbae9d63fb31b825bf22c@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261115T183000Z
 DTEND:20261115T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -45,28 +45,22 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:69103ac49c702ce758d97702@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261115T190000Z
 DTEND:20261115T191500Z
-SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\n🔁 Rep
- rogramado: no se publicó el mié 11-nov 1:00 PM (reprogramación 1 de 2)\
- nInstagram: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin conf
- irmar (pregunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y
-  archivo: en Telegram (/hoy) o en la app.
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\n🔁 Reprogramado
+ : no se publicó el mié 11-nov 1:00 PM (reprogramación 1 de 2)\nInstagra
+ m: ❌ no publicado → reprogramado al jue 26-nov\nTikTok: ❌ no publica
+ do → reprogramado al jue 26-nov\nCaption y archivo: en Telegram (/hoy) o
+  en la app.
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ❓ IG 
- · ❓ TikTok. 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:a08be2483e5def307fa0283d@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261115T223000Z
 DTEND:20261115T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -83,7 +77,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:0182a93015747ad497723c78@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261115T223000Z
 DTEND:20261115T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -100,7 +94,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:7d3cadd784770d1c7e41d294@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T010000Z
 DTEND:20261116T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ✅
@@ -113,7 +107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:260c59f749628686618bfdf6@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T010000Z
 DTEND:20261116T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ✅
@@ -126,7 +120,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:f5119db38a604fb133ad4865@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T030000Z
 DTEND:20261116T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -143,7 +137,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1704d220c762d60fdabf520f@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T030000Z
 DTEND:20261116T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -160,7 +154,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1d008664d7a995b2220a5963@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T183000Z
 DTEND:20261116T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -177,7 +171,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:cc60ffa1963ffe26c9c54c5b@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T183000Z
 DTEND:20261116T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -194,27 +188,21 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:9ca9e27ba7f6882a1213c33b@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T190000Z
 DTEND:20261116T191500Z
-SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al jue 26-nov\nTikTok: ❌ no publicado → re
+ programado al jue 26-nov\nCaption y archivo: en Telegram (/hoy) o en la ap
+ p.
 CATEGORIES:Outer
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · ❓ IG · ❓ T
- ikTok. 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:62053e99ff6e58983113df7d@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T223000Z
 DTEND:20261116T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -231,7 +219,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:420bbf567999d0f35d48cd58@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261116T223000Z
 DTEND:20261116T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -248,47 +236,35 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:33205bce855227795ab3370e@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T010000Z
 DTEND:20261117T011500Z
-SUMMARY:🎬 Alpha · Reel 7:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🎬 Alpha · Reel 7:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al jue 26-nov\nTikTok: ❌ no publicado → re
+ programado al jue 26-nov\nCaption y archivo: en Telegram (/hoy) o en la ap
+ p.
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🎬 Alpha · Reel 7:00 PM · ❓ IG · ❓ TikTok. 
- 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:63b7ea12c0ab3f181312fe09@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T010000Z
 DTEND:20261117T011500Z
-SUMMARY:🎬 Outer · Reel 7:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🎬 Outer · Reel 7:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al mar 24-nov\nTikTok: ❌ no publicado → re
+ programado al mar 24-nov\nCaption y archivo: en Telegram (/hoy) o en la ap
+ p.
 CATEGORIES:Outer
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · ❓ IG · ❓ TikTok. 
- 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:8f09af2f0b33554e4991421b@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T030000Z
 DTEND:20261117T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -305,7 +281,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:41866b05ec144e7860db76cb@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T030000Z
 DTEND:20261117T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -322,7 +298,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:68610d9bac1e2898e7c6bfc0@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T183000Z
 DTEND:20261117T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -339,7 +315,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:197d11bfc27e2681a721db33@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T183000Z
 DTEND:20261117T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -356,27 +332,21 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:a9ab0bf15886a41d72ca84e7@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T190000Z
 DTEND:20261117T191500Z
-SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al vie 27-nov\nTikTok: ❌ no publicado → re
+ programado al vie 27-nov\nCaption y archivo: en Telegram (/hoy) o en la ap
+ p.
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · ❓ IG · ❓ T
- ikTok. 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:15f7e8bb564fa18a861bf425@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T223000Z
 DTEND:20261117T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -393,7 +363,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:e9b61b5403a8e829fc80fad4@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261117T223000Z
 DTEND:20261117T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -410,7 +380,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:8dc775e46eb00cc39d0cf0b7@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T010000Z
 DTEND:20261118T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ✅
@@ -423,7 +393,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:1961d59f976fc260a7fd82ec@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T010000Z
 DTEND:20261118T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ✅
@@ -436,7 +406,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:441803742725a792a4d55605@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T030000Z
 DTEND:20261118T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -453,7 +423,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:7bfc6747128609001dcc91cb@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T030000Z
 DTEND:20261118T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -470,7 +440,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1ba8186d6d62dbc2ee2e122f@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T183000Z
 DTEND:20261118T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -487,7 +457,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:5aeffb44c94895fc178197bd@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T183000Z
 DTEND:20261118T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -504,27 +474,21 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:f1a66a887ee4b07faca8ae3b@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T190000Z
 DTEND:20261118T191500Z
-SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al vie 27-nov\nTikTok: ❌ no publicado → re
+ programado al vie 27-nov\nCaption y archivo: en Telegram (/hoy) o en la ap
+ p.
 CATEGORIES:Outer
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · ❓ IG · ❓ T
- ikTok. 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:187db29f640d204cbe019217@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T223000Z
 DTEND:20261118T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -541,7 +505,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:154e9af307ce2aedbb5fc3f2@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261118T223000Z
 DTEND:20261118T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -558,7 +522,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:480e3f3294e5745f4bb5cc47@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T010000Z
 DTEND:20261119T011500Z
 SUMMARY:🎬 Alpha · Reel 7:00 PM · ✅
@@ -571,7 +535,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:f2173d291472128abc791bc6@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T010000Z
 DTEND:20261119T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ✅ IG · ❓ TikTok
@@ -591,7 +555,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:18927186cdfdd08b8887ea52@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T030000Z
 DTEND:20261119T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -608,7 +572,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:361c2f0eb5df8750dacd41c4@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T030000Z
 DTEND:20261119T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -625,7 +589,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:b514037e8b56109854928e01@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T183000Z
 DTEND:20261119T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -642,7 +606,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:daa1f2c36beaca4624e98327@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T183000Z
 DTEND:20261119T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -659,27 +623,21 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:0b437f674a6c610f75177f0a@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T190000Z
 DTEND:20261119T191500Z
-SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al sáb 28-nov\nTikTok: ❌ no publicado → r
+ eprogramado al sáb 28-nov\nCaption y archivo: en Telegram (/hoy) o en la 
+ app.
 CATEGORIES:Alpha
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · ❓ IG · ❓ T
- ikTok. 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:74291e5dadfdf82d0b3cc943@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T223000Z
 DTEND:20261119T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -696,7 +654,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:0d2e8afa87b75b712ad4b44b@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261119T223000Z
 DTEND:20261119T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -713,27 +671,21 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ea5386d204024d7a587f2c63@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261120T010000Z
 DTEND:20261120T011500Z
-SUMMARY:🎬 Outer · Reel 7:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🎬 Outer · Reel 7:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al mié 25-nov\nTikTok: ❌ no publicado → r
+ eprogramado al mié 25-nov\nCaption y archivo: en Telegram (/hoy) o en la 
+ app.
 CATEGORIES:Outer
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · ❓ IG · ❓ TikTok. 
- 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:61cd229681bb43628a43628b@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261120T030000Z
 DTEND:20261120T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -750,7 +702,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:011d0839e429ac449e7c60d3@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261120T030000Z
 DTEND:20261120T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -767,7 +719,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:c07871c376090dbfe24ea6c5@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261120T183000Z
 DTEND:20261120T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -784,7 +736,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1a27123787559170077159c3@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261120T183000Z
 DTEND:20261120T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -801,27 +753,21 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:6807d3706ba9299957c36f86@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261120T190000Z
 DTEND:20261120T191500Z
-SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al sáb 28-nov\nTikTok: ❌ no publicado → r
+ eprogramado al sáb 28-nov\nCaption y archivo: en Telegram (/hoy) o en la 
+ app.
 CATEGORIES:Outer
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · ❓ IG · ❓ T
- ikTok. 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:4183dfe15f88ddeb41a10299@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261120T223000Z
 DTEND:20261120T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -838,7 +784,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:3890539034cac77b1295e085@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261120T223000Z
 DTEND:20261120T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -855,7 +801,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:34622c8718ec2ae1aa335e81@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261121T010000Z
 DTEND:20261121T011500Z
 SUMMARY:🎬 Outer · Reel 7:00 PM · ✅
@@ -868,7 +814,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ed7f9af2548b80593a9cc72d@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261121T030000Z
 DTEND:20261121T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -885,7 +831,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ebd342dd6fbe33edbf5bbc45@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261121T030000Z
 DTEND:20261121T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -902,7 +848,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1b634bf00ebc7e73848b0edd@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261121T183000Z
 DTEND:20261121T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -919,7 +865,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:afcbd4a9acc1227277b5ab97@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261121T183000Z
 DTEND:20261121T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -936,7 +882,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:857a497ab885d435190bb7b8@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261121T223000Z
 DTEND:20261121T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -953,7 +899,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:57fe9b08d9214be45f7cb89c@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261121T223000Z
 DTEND:20261121T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -970,27 +916,21 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:7f8b9eebedcff4b45bd75d35@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261122T010000Z
 DTEND:20261122T011500Z
-SUMMARY:🎬 Outer · Reel 7:00 PM · ❓ IG · ❓ TikTok
-DESCRIPTION:Estado: 📅 Programado en Buffer\nRedes: IG + TikTok\nInstagra
- m: ❓ sin confirmar (pregunta en Telegram)\nTikTok: ❓ sin confirmar (pr
- egunta en Telegram)\n🎵 Ponle música en IG y TikTok\nCaption y archivo:
-  en Telegram (/hoy) o en la app.
+SUMMARY:🎬 Outer · Reel 7:00 PM · ❌ IG · ❌ TikTok
+DESCRIPTION:Estado: ❌ No publicado\nRedes: IG + TikTok\nInstagram: ❌ no
+  publicado → reprogramado al jue 26-nov\nTikTok: ❌ no publicado → re
+ programado al jue 26-nov\nCaption y archivo: en Telegram (/hoy) o en la ap
+ p.
 CATEGORIES:Outer
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · ❓ IG · ❓ TikTok. 
- 🎵 Ponle música en IG y TikTok
-TRIGGER:-PT15M
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:e29c11a976f5f039450a5fac@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261122T030000Z
 DTEND:20261122T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -1007,7 +947,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:4639af66c6b69b1e6cceedfe@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261122T030000Z
 DTEND:20261122T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -1024,7 +964,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:135f16cf60bf9209e0fe6f57@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261122T183000Z
 DTEND:20261122T184500Z
 SUMMARY:📱 Alpha · Historia 12:30 PM
@@ -1041,7 +981,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:0a3c6561e6df1af4268cabee@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261122T183000Z
 DTEND:20261122T184500Z
 SUMMARY:📱 Outer · Historia 12:30 PM
@@ -1058,7 +998,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:76d3508ccc61f964debc333c@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261122T223000Z
 DTEND:20261122T224500Z
 SUMMARY:📱 Alpha · Historia 4:30 PM
@@ -1075,7 +1015,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:d36e07be66077c2e794e0fc5@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261122T223000Z
 DTEND:20261122T224500Z
 SUMMARY:📱 Outer · Historia 4:30 PM
@@ -1092,7 +1032,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:a37e221237ad5e9e56307cf8@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261123T030000Z
 DTEND:20261123T031500Z
 SUMMARY:📱 Alpha · Historia 9:00 PM
@@ -1109,7 +1049,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:10f5f8a192e00c2417848aa7@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261123T030000Z
 DTEND:20261123T031500Z
 SUMMARY:📱 Outer · Historia 9:00 PM
@@ -1125,8 +1065,28 @@ TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:fb5257d8ea04e1a61e66a6b7@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261123T190000Z
+DTEND:20261123T191500Z
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el mar 10-nov 1:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:09ea10da5370d80043ee8cd1@contenido-outer-alpha
-DTSTAMP:20261122T165950Z
+DTSTAMP:20261122T210205Z
 DTSTART:20261123T190000Z
 DTEND:20261123T191500Z
 SUMMARY:🖼️ Outer · Carrusel 1:00 PM
@@ -1140,6 +1100,366 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM. 🎵 Ponle músic
  a en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fbb2511ab54cdc66dc071eb7@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261124T010000Z
+DTEND:20261124T011500Z
+SUMMARY:🎬 Alpha · Reel 7:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el vie 6-nov 7:00 PM (reprogramación 1 de 2)\n🎵 Po
+ nle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la 
+ app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Alpha · Reel 7:00 PM · 🔁 · ⏳ sin progra
+ mar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a990d1b5b8db32509e5b45b2@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261124T010000Z
+DTEND:20261124T011500Z
+SUMMARY:🎬 Outer · Reel 7:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el mié 11-nov 7:00 PM (reprogramación 1 de 2)\n🎵 
+ Ponle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en l
+ a app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · 🔁 · ⏳ sin progra
+ mar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f7750e7b0a827b79f62e6523@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261124T190000Z
+DTEND:20261124T191500Z
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el vie 13-nov 1:00 PM (reprogramación 2 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7048f21e94dcb0b4e23f9876@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261124T190000Z
+DTEND:20261124T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el mar 10-nov 1:00 PM (reprogramación 2 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c36d7006ba0187ec8a8be163@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261125T010000Z
+DTEND:20261125T011500Z
+SUMMARY:🎬 Alpha · Reel 7:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el vie 13-nov 7:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Alpha · Reel 7:00 PM · 🔁 · ⏳ sin progra
+ mar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e9a65d491221d02cfafb69d3@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261125T010000Z
+DTEND:20261125T011500Z
+SUMMARY:🎬 Outer · Reel 7:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el lun 16-nov 7:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · 🔁 · ⏳ sin progra
+ mar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:af2587c2d14a9d3fdecfbebe@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261125T190000Z
+DTEND:20261125T191500Z
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el sáb 14-nov 1:00 PM (reprogramación 1 de 2)\n🎵 
+ Ponle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en l
+ a app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:08ba9a244a77e750c6e2ebbe@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261125T190000Z
+DTEND:20261125T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el vie 13-nov 1:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dff268dce4421b9e9af851e8@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261126T010000Z
+DTEND:20261126T011500Z
+SUMMARY:🎬 Alpha · Reel 7:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el mar 10-nov 7:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Alpha · Reel 7:00 PM · 🔁 · ⏳ sin progra
+ mar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a8bfc5c3e9043f073cee2caa@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261126T010000Z
+DTEND:20261126T011500Z
+SUMMARY:🎬 Outer · Reel 7:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el jue 19-nov 7:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · 🔁 · ⏳ sin progra
+ mar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:4835aac988a528c56ccb5e85@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261126T190000Z
+DTEND:20261126T191500Z
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el dom 15-nov 1:00 PM (reprogramación 2 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:3b4a2b0076f24bb0211374ba@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261126T190000Z
+DTEND:20261126T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el lun 16-nov 1:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fb19cf106b6722b3727258c6@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261127T010000Z
+DTEND:20261127T011500Z
+SUMMARY:🎬 Alpha · Reel 7:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el lun 16-nov 7:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Alpha · Reel 7:00 PM · 🔁 · ⏳ sin progra
+ mar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bf2ad8e280fc582afce3d4c7@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261127T010000Z
+DTEND:20261127T011500Z
+SUMMARY:🎬 Outer · Reel 7:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el sáb 21-nov 7:00 PM (reprogramación 1 de 2)\n🎵 
+ Ponle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en l
+ a app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🎬 Outer · Reel 7:00 PM · 🔁 · ⏳ sin progra
+ mar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1ba2a296d4dad34bee3e8a46@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261127T190000Z
+DTEND:20261127T191500Z
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el mar 17-nov 1:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:763184c7530e9b496e0c58fa@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261127T190000Z
+DTEND:20261127T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el mié 18-nov 1:00 PM (reprogramación 1 de 2)\n🎵 
+ Ponle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en l
+ a app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:84ca04265c8bbc1de7fadce5@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261128T190000Z
+DTEND:20261128T191500Z
+SUMMARY:🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el jue 19-nov 1:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Alpha
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Alpha · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ca41c182dd2890778ba81e76@contenido-outer-alpha
+DTSTAMP:20261122T210205Z
+DTSTART:20261128T190000Z
+DTEND:20261128T191500Z
+SUMMARY:🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin programar
+DESCRIPTION:Estado: ⏳ Falta programar\nRedes: IG + TikTok\n🔁 Reprogram
+ ado: no se publicó el vie 20-nov 1:00 PM (reprogramación 1 de 2)\n🎵 P
+ onle música en IG y TikTok\nCaption y archivo: en Telegram (/hoy) o en la
+  app.
+CATEGORIES:Outer
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:En 15 min: 🖼️ Outer · Carrusel 1:00 PM · 🔁 · ⏳ sin
+  programar. 🎵 Ponle música en IG y TikTok
 TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
